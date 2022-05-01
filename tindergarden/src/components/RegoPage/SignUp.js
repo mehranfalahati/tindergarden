@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 
 
+
 class SignUp extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             error: null,
             email: '',
@@ -38,7 +39,7 @@ class SignUp extends Component {
                     <div>
                         <input type="email" name="email" placeholder="Email" onChange={this._handleChange} value={this.state.email} />
                         <input type="password" name="password" placeholder="Password" onChange={this._handleChange} value={this.state.password} />
-                        {this.state.error ? console.log(this.state.error) : null}
+                            {this.state.error ? console.log(this.state.error) : null}
                         <button type="submit">Sign Up</button>
                     </div>
                 </form>

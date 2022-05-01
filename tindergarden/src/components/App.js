@@ -1,10 +1,11 @@
 import Pages from "./pages/pages/Pages";
 
 
+
 function App() {
   return (
     <div className="App">
-      <Pages />
+        <Pages />
     </div>
   );
 }
