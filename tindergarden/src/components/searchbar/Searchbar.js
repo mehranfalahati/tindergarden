@@ -18,7 +18,7 @@ class Searchbar extends Component {
 
                 <div className="searchRight">
                     <div className="links">
-            <span className="homeLink">Home</span>
+                    <span className="homeLink">Home</span>
                     </div>
                 </div>
             </div>
