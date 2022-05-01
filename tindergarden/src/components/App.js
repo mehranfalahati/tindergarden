@@ -1,12 +1,11 @@
-import Home from "../pages/home/Home";
-import SignUp from "./RegoPage/SignUp";
+import {Routes, Route, Link} from "react-router-dom"
+import Pages from "./pages/pages/Pages";
 
 
 function App() {
   return (
     <div className="App">
-        <Home />
-        <SignUp /> 
+      <Pages />
     </div>
   );
 }

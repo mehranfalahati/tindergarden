@@ -18,6 +18,12 @@
 
 .searchRight {
     flex: 2;
+    display: flex;
+    align-items: center;
+    color: blueviolet;
+    font-weight: bold;
+    justify-content: space-around;
+    
 }
 
 .appName {
@@ -39,10 +45,51 @@
 
 .searchInput {
     border: none;
-    width: 90%;
+    width: 70%;
     align-items: center;
 }
 
 .searchInput:focus {
     outline: none;
+}
+
+.searchIcon {
+    margin-left: 10px;
+}
+
+.rightIcons {
+    display: flex;
+}
+
+.iconItem {
+    position: relative;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+.iconNumber {
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 15px;
+}
+
+.searchImg {
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.homeLink {
+    cursor: pointer;
 }
