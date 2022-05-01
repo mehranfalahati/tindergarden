@@ -1,9 +1,10 @@
+import SignUp from "./RegoPage/SignUp";
 
 
 function App() {
   return (
     <div className="App">
-        Hey 
+        <SignUp /> 
     </div>
   );
 }
