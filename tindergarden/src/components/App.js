@@ -1,17 +1,11 @@
-import Home from "../pages/home/Home";
-import SignUp from "./RegoPage/SignUp";
-import Login from "./RegoPage/Login";
-import {BrowserRouter as Router, Switch} from "react-router-dom";
-import {auth} from "../Firebase/firebase";
+import Pages from "./pages/pages/Pages";
 
 
 
 function App() {
   return (
     <div className="App">
-        <Home />
-        <SignUp />
-        <Login /> 
+        <Pages />
     </div>
   );
 }
