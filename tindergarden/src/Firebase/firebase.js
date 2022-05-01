@@ -6,7 +6,7 @@ import {
 } from  "firebase/firestore";
 
 import {
-  getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword
+  auth, getAuth, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword
 } from 'firebase/auth'
 
 import { getAnalytics } from "firebase/analytics";
@@ -31,7 +31,7 @@ const db = getFirestore();
 
 const colUsers = collection(db, 'users');
 const colEvents = collection(db, 'events');
-export const auth = getAuth();
+//export const auth = getAuth();
 getDocs(colUsers).then((snapshot) => {console.log(snapshot.docs)});
 getDocs(colEvents).then((snapshot) => {console.log(snapshot.docs)});
 const analytics = getAnalytics(app);

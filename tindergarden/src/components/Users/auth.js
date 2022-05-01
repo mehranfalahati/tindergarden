@@ -1,4 +1,5 @@
-import { auth } from "../Firebase/firebase";
+import {auth} from "../Firebase/firebase";
+
 
 
 export function signup(email, password) {
@@ -21,3 +22,4 @@ export function signup(email, password) {
   export function getCurrentUser() {
     return auth().currentUser;
   }
+
