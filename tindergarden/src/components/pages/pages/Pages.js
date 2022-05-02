@@ -12,7 +12,7 @@ class Pages extends Component {
             <div>
                 <Routes>
                     <Route path="/home" element={<Home />} />
-                    <Route path="/" element={<SignUp />} />
+                    <Route path="/signup" element={<SignUp />} />
                     <Route path="/edit" element={<Edit />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/login" element={<Login />} />

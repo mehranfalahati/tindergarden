@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { getCurrentUser, signInWithGoogle, signup } from "../Users/auth";
+import {Link} from "react-router-dom"
+import {fsDb} from "../../Firebase/firebase"
 
 
 
@@ -21,11 +24,26 @@ class SignUp extends Component {
         });
     }
 
-    _handleSubmit(event) {
+    async _handleSubmit(event) {
         event.preventDefault();
         this.setState({ error: ''});
+        try {
+            await signup(this.state.email, this.state.password);
+            await fsDb.collection('users').doc().set({name: '', email: this.state.email, user_id: getCurrentUser().uid})
+            //current user here
+        } catch(error) {
+            this.setState({error: error.message});
+        }
        
         console.log('Error message: ', this.state.error);
+    }
+
+    googleSignin = async() => {
+        try {
+            await signInWithGoogle();
+        }catch(error) {
+            this.setState({error: error.message});
+        }
     }
 
 
@@ -42,7 +60,10 @@ class SignUp extends Component {
                         <input type="password" name="password" placeholder="Password" onChange={this._handleChange} value={this.state.password} />
                             {this.state.error ? console.log(this.state.error) : null}
                         <button type="submit">Sign Up</button>
+                        <button onClick={this.googleSignin} type='button'>Sign up with google</button>
                     </div>
+                    <hr></hr>
+                    <p>Already have an account? <Link to='/login'>Login</Link></p>
                 </form>
             </div>
         );

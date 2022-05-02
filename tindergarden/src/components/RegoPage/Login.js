@@ -39,7 +39,7 @@ class Login extends Component {
                 <form autoComplete="off" onSubmit={this._handleSubmit}>
                     <h1>
                         Login to{' '}
-                        
+                        <Link to='/' >Tindergarden</Link>                        
                     </h1>
                     <p>
                         Enter your username and password to Login
@@ -53,7 +53,7 @@ class Login extends Component {
                         <button type="submit">Login</button>
                     </div>
                     
-                    <p>Don't have an account?  </p>
+                    <p>Don't have an account? <Link to="/signup">Sign Up</Link> </p>
                 </form>
             </div>
             
