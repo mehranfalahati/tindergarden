@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import mainpage from "./mainpage.css"
+import Post from "../newpost/Post";
+import Feeds from "../feeds/Feeds";
 
 class Mainpage extends Component {
     render() {
         return (
             <div className="feed">
-                this is feed page
+                <Post />
+                <Feeds />
             </div>
         )
     }

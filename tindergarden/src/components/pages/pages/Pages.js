@@ -5,6 +5,7 @@ import SignUp from "../../RegoPage/SignUp";
 import Edit from "../edit/Edit";
 import Profile from "../profile/Profile"
 import Login from "../../RegoPage/Login";
+import Post from "../newpost/Post";
 
 class Pages extends Component {
     render() {
@@ -15,7 +16,8 @@ class Pages extends Component {
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/edit" element={<Edit />} />
                     <Route path="/profile" element={<Profile />} />
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/" element={<Login />} />
+                    <Route path="/newpost" element={<Post />} />
                 </Routes>
             </div>
         )
