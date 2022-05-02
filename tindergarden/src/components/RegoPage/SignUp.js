@@ -24,6 +24,7 @@ class SignUp extends Component {
     _handleSubmit(event) {
         event.preventDefault();
         this.setState({ error: ''});
+       
         console.log('Error message: ', this.state.error);
     }
 
