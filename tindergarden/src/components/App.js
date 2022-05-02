@@ -1,4 +1,5 @@
 import Pages from "./pages/pages/Pages";
+import firebase from "../Firebase/firebase"
 
 
 

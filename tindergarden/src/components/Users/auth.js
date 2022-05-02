@@ -1,4 +1,7 @@
-import {auth} from "../../Firebase/firebase";
+//import {auth} from "../../Firebase/firebase";
+import firebase from "firebase/app"
+import 'firebase/auth';
+const auth = firebase.auth;
 
 
 

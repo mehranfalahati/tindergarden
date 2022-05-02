@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link} from "react-router-dom";
+import {Link} from "react-router-dom";
+import { signin, signInWithGoogle } from "../Users/auth";
 
 
 
@@ -25,16 +22,21 @@ class Login extends Component {
             [event.target.name]: event.target.value
         });
     }    
-    _handleSubmit(event) {
+    async _handleSubmit(event) {
         event.preventDefault();
         this.setState({error: ""});
+        try {
+            await signin(this.state.email, this.state.password);
+        } catch(error) {
+            this.setState({error: error.message})
+        }        
     }
     
     render() {
         return(
            
             <div>
-                <form onSubmit={this._handleSubmit}>
+                <form autoComplete="off" onSubmit={this._handleSubmit}>
                     <h1>
                         Login to{' '}
                         
@@ -44,7 +46,7 @@ class Login extends Component {
                     </p>
                     <div>
                         <input type="email" name="email" placeholder="Email" onChange={this._handleChange} value={this.state.email} />
-                        <input type="password" name="password" onChange={this._handleChange} value={this.state.password} />
+                        <input type="password" name="password" placeholder="password" onChange={this._handleChange} value={this.state.password} />
                     </div>
                     <div>
                         {this.state.error ? (<p>{this.state.error}</p>) : null}

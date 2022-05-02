@@ -4,7 +4,7 @@ import Home from "../home/Home";
 import SignUp from "../../RegoPage/SignUp";
 import Edit from "../edit/Edit";
 import Profile from "../profile/Profile"
-import Login from "../../RegoPage/Login"
+import Login from "../../RegoPage/Login";
 
 class Pages extends Component {
     render() {
