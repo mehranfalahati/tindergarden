@@ -41,6 +41,7 @@ class Edit extends Component {
                 }               
             },
         };
+        
     }
     ///Fetching user info
     componentDidMount(){
@@ -51,6 +52,7 @@ class Edit extends Component {
         fsDb.collection('user_profile').where('user_id', '==', getCurrentUser().uid).get()
         .then((snapshots) => {
             snapshots.forEach((f) => {
+                console.log(f);
                 this.setState({
                     name: (f.data()).name,
                     userDocId: f.id                    

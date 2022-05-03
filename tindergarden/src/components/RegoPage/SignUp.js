@@ -31,6 +31,7 @@ class SignUp extends Component {
         try {
             await signup(this.state.email, this.state.password);
             await fsDb.collection('users').doc().set({name: '', email: this.state.email, user_id: getCurrentUser().uid})
+            //await fsDb.collection('user_profiles').doc().set({hello: 'world'});
             //current user here
         } catch(error) {
             this.setState({error: error.message});
