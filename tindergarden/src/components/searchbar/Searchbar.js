@@ -38,7 +38,9 @@ class Searchbar extends Component {
                             <span className="iconNumber">1</span>
                         </div>
                     </div>
-                    <img src="/pictures/profile/1.jpeg" alt="profile-picture" className="searchImg"/>
+                    <Link to="/profile">
+                        <img src="/pictures/profile/1.jpeg" alt="profile-picture" className="searchImg"/>  
+                    </Link>
                     <Link to="/">sign up</Link>
                     <Link to="/edit">Edit</Link>
                     <Link to="/profile">Profile</Link>
