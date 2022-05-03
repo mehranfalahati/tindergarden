@@ -49,12 +49,11 @@ class Pages extends Component {
                     <div>
                         <Switch>
                             <Route path="/home" authenticated={this.state.authenticated} component={Home} />                           
-                            <Route path="/edit" authenticated={this.state.authenticated}  ><Edit /></Route>
+                            <Route path="/edit" authenticated={this.state.authenticated} component={Edit} />
                             <Route path="/profile" authenticated={this.state.authenticated} component={Profile}  />
-                            <Route path="/" authenticated={this.state.authenticated}  ><Login /></Route>
-                            <Route path="/newpost" authenticated={this.state.authenticated}  ><Post /></Route>
-                            <Route path="/login" authenticated={this.state.authenticated}  ><Login/></Route>
-                            <Route path="/signup" authenticated={this.state.authenticated}  ><SignUp /></Route>
+                            <Route path="/" authenticated={this.state.authenticated} component={Login} />
+                            <Route path="/newpost" authenticated={this.state.authenticated} component={Post} />
+                            <Route path="/signup" authenticated={this.state.authenticated} component={SignUp} />
                         </Switch>
                     </div>
                         
