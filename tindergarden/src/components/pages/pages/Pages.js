@@ -1,45 +1,14 @@
 import React, { Component } from "react";
-import {BrowserRouter as Router, Switch, Redirect, Route, Link} from "react-router-dom"
+import {Routes, Route, Link} from "react-router-dom"
 import Home from "../home/Home";
 import SignUp from "../../RegoPage/SignUp";
 import Edit from "../edit/Edit";
 import Profile from "../profile/Profile"
 import Login from "../../RegoPage/Login";
 import Post from "../newpost/Post";
-import PrivateDir from "../../PrivateDir";
-import PublicDir from "../../PublicDir";
-import {auth} from "../../../Firebase/firebase";
-import { Layout } from 'antd';
-import Searchbar from "../../searchbar/Searchbar";
-
-
-const {Content} = Layout;
 
 class Pages extends Component {
-    constructor() {
-        super();
-        this.state ={
-            authenticated: false,
-            loading: true,
-        };
-    }
-
-    componentDidMount() {
-        auth().onAuthStateChanged((user) => {
-          if (user) {
-            this.setState({
-              authenticated: true,
-              loading: false,
-            });
-          } else {
-            this.setState({
-              authenticated: false,
-              loading: false,
-            });
-          }
-        })
-      }
-
+   
     render() {
         return this.state.loading === true ? <h2>Loading...</h2> : (
             <Layout>

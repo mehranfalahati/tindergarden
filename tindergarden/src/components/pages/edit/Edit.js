@@ -129,7 +129,8 @@ class Edit extends Component {
         )
     }
 }
- class UserInfo extends Component {
+
+class UserInfo extends Component {
      render() {
          const info = this.props.info;
          return (
