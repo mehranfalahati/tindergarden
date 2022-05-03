@@ -10,7 +10,7 @@ class Home extends Component {
     render() {
         return (
             <>
-                <Searchbar />
+
                 <div className="mainContainer">
                     <Leftside />
                     <Mainpage />

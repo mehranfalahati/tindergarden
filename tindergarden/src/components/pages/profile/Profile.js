@@ -13,7 +13,6 @@ class Profile extends Component {
     render() {
         return (
             <>
-                <Searchbar />
                 <div className="mainContainer">
                     <Leftside />
                     <div className="profilePicture">

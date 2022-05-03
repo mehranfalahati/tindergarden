@@ -48,7 +48,7 @@ class Pages extends Component {
                             <Route path="/home" authenticated={this.state.authenticated} component={Home} />                           
                             <Route path="/edit" authenticated={this.state.authenticated} component={Edit} />
                             <Route path="/profile" authenticated={this.state.authenticated} component={Profile}  />
-                            <Route path="/" authenticated={this.state.authenticated} component={Login} />
+                            <Route exact path="/" authenticated={this.state.authenticated} component={Login} />
                             <Route path="/newpost" authenticated={this.state.authenticated} component={Post} />
                             <Route path="/signup" authenticated={this.state.authenticated} component={SignUp} />
                         </Switch>
