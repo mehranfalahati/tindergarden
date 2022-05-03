@@ -1,13 +1,41 @@
 import React, { Component } from "react";
-import {Routes, Route, Link} from "react-router-dom"
+import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom"
 import Home from "../home/Home";
 import SignUp from "../../RegoPage/SignUp";
 import Edit from "../edit/Edit";
 import Profile from "../profile/Profile"
 import Login from "../../RegoPage/Login";
 import Post from "../newpost/Post";
+import {auth} from "../../../Firebase/firebase";
+import { Layout } from "antd";
+import Searchbar from "../../searchbar/Searchbar";
+
+const {Content} = Layout
 
 class Pages extends Component {
+    constructor() {
+        super();
+        this.state ={
+            authenticated: false,
+            loading: true,
+        };
+    }
+
+    componentDidMount() {
+        auth().onAuthStateChanged((user) => {
+          if (user) {
+            this.setState({
+              authenticated: true,
+              loading: false,
+            });
+          } else {
+            this.setState({
+              authenticated: false,
+              loading: false,
+            });
+          }
+        })
+      }
    
     render() {
         return this.state.loading === true ? <h2>Loading...</h2> : (
@@ -26,10 +54,8 @@ class Pages extends Component {
                         </Switch>
                     </div>
                         
-                    </Content>                  
-                    
-                        
-                                       
+                    </Content>               
+                                  
                 </Router>
             </Layout>
                 
