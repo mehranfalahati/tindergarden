@@ -9,9 +9,10 @@ import {
 } from "react-router-dom";
 
 function PrivateDir({ component: Component, authenticated, ...rest }) {
-   
+   console.log(rest);
   return (
-    <Route
+      
+    <Route    
       {...rest}
       render={(props) => authenticated === true
         ? <Component {...props} />

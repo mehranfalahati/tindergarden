@@ -1,3 +1,4 @@
+
 import { ResetTvRounded, TripOriginSharp } from "@mui/icons-material";
 import { render } from "@testing-library/react";
 import React, { Component }  from "react";
@@ -6,6 +7,10 @@ import { Upload, Message, Button, message } from "antd"
 import { UploadOutlined } from '@ant-design/icons';
 import { Card, Input  } from 'antd';
 import { ActionTypes } from "@mui/base";
+import { fsDb } from "../../../Firebase/firebase";
+import { getCurrentUser } from "../../Users/auth";
+import Profile from "../profile/Profile";
+
 
 
 const { TextArea } = Input;
@@ -14,10 +19,12 @@ class Edit extends Component {
         super();
         this.state = {
             showForm: false,
-            name: 'Mehran',
-            family: 'Falahati'
+            name: '',
+            family: ''
         } 
+        this.uploadFile = this.uploadFile.bind(this);
 
+        ////////Upload a file
 
         this.uploadProps = {
             name: 'file',
@@ -29,28 +36,49 @@ class Edit extends Component {
                 if (info.file.status !== 'uploading') {
                     console.log(info.file, info.fileList);
                 }
-                message.success(`${info.file.name} is uploaded successfully!`)
-            }
-        }
+                if (info.file.status === 'done'){
+                   message.success(`${info.file.name} is uploaded successfully!`) 
+                }               
+            },
+        };
     }
-
+    ///Fetching user info
     componentDidMount(){
-        this.fetchUserInfo();
+        this.fetchUserInfo();        
     }
-
+    
     fetchUserInfo = () => {
-        //todo
-    }
+        fsDb.collection('user_profile').where('user_id', '==', getCurrentUser().uid).get()
+        .then((snapshots) => {
+            snapshots.forEach((f) => {
+                this.setState({
+                    name: (f.data()).name,
+                    userDocId: f.id                    
+                });
+                console.log(this.state.name);
+            });        
+        });
+    };
 
 
     uploadFile = (file) => {
         //todo
     }
 
- //// Update
- saveChanges () {
+ //// Update user info to DB
+    saveProfile (data) {
+        fsDb.collection("user_profile").where("user_id", "==", getCurrentUser().uid).get()
+        .then((snapshots) => {
+            snapshots.forEach((Profile) => {
+                fsDb.collection("user_profile").doc(Profile.id).set({
+                    name: data.name},
+                    {merge:true}).then(() => { this.fetchUserInfo();
 
- }
+                })
+            });
+        })
+    }
+    
 
 
 
@@ -65,9 +93,9 @@ class Edit extends Component {
         this.setState({name: event.target.value});
     }
 
-    _handleFamilyname = (event) => {
-        this.setState({family: event.target.value})
-    }
+    // _handleFamilyname = (event) => {
+    //     this.setState({family: event.target.value})
+    // }
 
      
  //// From
@@ -89,7 +117,7 @@ class Edit extends Component {
     }
 
 
-    //// Render
+    //// Render Form
     render() {
         return(
             <div>

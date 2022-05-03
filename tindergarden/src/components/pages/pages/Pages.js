@@ -44,17 +44,17 @@ class Pages extends Component {
         return this.state.loading === true ? <h2>Loading...</h2> : (
             <Layout>
                 <Router>
-                    <Searchbar isLoggedIn={this.state.authenticated} />
+                    <Searchbar  />
                     <Content>
                     <div>
                         <Switch>
-                            <PrivateDir exact path="/home" authenticated={this.state.authenticated} component={<Home />} /><PrivateDir/>                            
-                            <PrivateDir path="/edit" authenticated={this.state.authenticated} component={<Edit />} /><PrivateDir/>
-                            <PrivateDir path="/profile" authenticated={this.state.authenticated} component={<Profile />} /><PrivateDir/>
-                            <PrivateDir path="/" authenticated={this.state.authenticated} component={<Login />} /><PrivateDir/>
-                            <PrivateDir path="/newpost" authenticated={this.state.authenticated} component={<Post />} /><PrivateDir/>
-                            <PublicDir path="/login" authenticated={this.state.authenticated} component={<Login/>} /><PublicDir/>
-                            <PublicDir path="/signup" authenticated={this.state.authenticated} component={<SignUp />} /> <PublicDir/>
+                            <Route path="/home" authenticated={this.state.authenticated} component={Home} />                           
+                            <Route path="/edit" authenticated={this.state.authenticated}  ><Edit /></Route>
+                            <Route path="/profile" authenticated={this.state.authenticated} component={Profile}  />
+                            <Route path="/" authenticated={this.state.authenticated}  ><Login /></Route>
+                            <Route path="/newpost" authenticated={this.state.authenticated}  ><Post /></Route>
+                            <Route path="/login" authenticated={this.state.authenticated}  ><Login/></Route>
+                            <Route path="/signup" authenticated={this.state.authenticated}  ><SignUp /></Route>
                         </Switch>
                     </div>
                         
