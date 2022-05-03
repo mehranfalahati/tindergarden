@@ -11,7 +11,8 @@ class Login extends Component {
         this.state ={
             error: null,
             email: "",
-            password: "",            
+            password: "",
+            isLogIn: false,            
         };
         this._handleChange = this._handleChange.bind(this);
         this._handleSubmit = this._handleSubmit.bind(this);
@@ -27,6 +28,8 @@ class Login extends Component {
         this.setState({error: ""});
         try {
             await signin(this.state.email, this.state.password);
+            this.setState({isLogIn: true});
+            
         } catch(error) {
             this.setState({error: error.message})
         }        
@@ -35,7 +38,10 @@ class Login extends Component {
     render() {
         return(
            
-            <div>
+            <div>            
+
+                
+
                 <form autoComplete="off" onSubmit={this._handleSubmit}>
                     <h1>
                         Login to{' '}
