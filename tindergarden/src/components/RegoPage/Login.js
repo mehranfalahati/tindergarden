@@ -12,7 +12,7 @@ class Login extends Component {
             error: null,
             email: "",
             password: "",
-            isLogIn: false,            
+            isLogedIn: false,            
         };
         this._handleChange = this._handleChange.bind(this);
         this._handleSubmit = this._handleSubmit.bind(this);
@@ -28,7 +28,7 @@ class Login extends Component {
         this.setState({error: ""});
         try {
             await signin(this.state.email, this.state.password);
-            this.setState({isLogIn: true});
+            this.setState({isLogedIn: true});
             window.location.href = '/home';
             
         } catch(error) {
@@ -51,7 +51,7 @@ class Login extends Component {
                     </p>
                     <div>
                         <input type="email" name="email" placeholder="Email" onChange={this._handleChange} value={this.state.email} />
-                        <input type="password" name="password" placeholder="password" onChange={this._handleChange} value={this.state.password} />
+                        <input type="password" name="password" placeholder="Password" onChange={this._handleChange} value={this.state.password} />
                     </div>
                     <div>
                         {this.state.error ? (<p>{this.state.error}</p>) : null}

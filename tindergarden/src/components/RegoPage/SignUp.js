@@ -60,12 +60,12 @@ class SignUp extends Component {
                     <div>
                         <input type="email" name="email" placeholder="Email" onChange={this._handleChange} value={this.state.email} />
                         <input type="password" name="password" placeholder="Password" onChange={this._handleChange} value={this.state.password} />
-                            {this.state.error ? console.log(this.state.error) : null}
+                            {this.state.error ? <p>{this.state.error}</p> : null}
                         <button type="submit">Sign Up</button>
                         <button onClick={this.googleSignin} type='button'>Sign up with google</button>
                     </div>
-                    <hr></hr>
-                    <p>Already have an account? <Link to='/login'>Login</Link></p>
+                    <br/>
+                    <p>Already have an account? <Link to='/'>Login</Link></p>
                 </form>
             </div>
         );
