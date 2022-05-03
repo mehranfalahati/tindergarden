@@ -29,6 +29,7 @@ class Login extends Component {
         try {
             await signin(this.state.email, this.state.password);
             this.setState({isLogIn: true});
+            window.location.href = '/home';
             
         } catch(error) {
             this.setState({error: error.message})

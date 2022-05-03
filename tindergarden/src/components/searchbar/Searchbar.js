@@ -2,8 +2,15 @@ import React, { Component } from "react";
 import searchbar from "./searchbar.css";
 import {Search, Person, Chat, Notifications} from "@mui/icons-material";
 import { Routes, Route, Link } from "react-router-dom";
+import { signOut } from "../Users/auth";
 
 class Searchbar extends Component {
+    _handleLogOut = () => {
+        signOut().then(() => {
+            window.location.href = '/';
+        })
+    }
+
     render() {
         return (
             <div className="searchContainer"> 
@@ -41,7 +48,10 @@ class Searchbar extends Component {
                     <Link to="/profile">
                         <img src="/pictures/profile/1.jpeg" alt="profile-picture" className="searchImg"/>  
                     </Link>
-                    <Link to="/">sign up</Link>
+                    
+                    <Link onClick={this._handleLogOut}>
+                        Sign out
+                    </Link>
                     <Link to="/edit">Edit</Link>
                     <Link to="/profile">Profile</Link>
                 </div>
