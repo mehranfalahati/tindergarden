@@ -38,10 +38,8 @@ class Login extends Component {
     render() {
         return(
            
-            <div>            
-
-                
-
+            <div>           
+             
                 <form autoComplete="off" onSubmit={this._handleSubmit}>
                     <h1>
                         Login to{' '}

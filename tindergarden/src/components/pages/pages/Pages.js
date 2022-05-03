@@ -8,18 +8,33 @@ import Login from "../../RegoPage/Login";
 import Post from "../newpost/Post";
 
 class Pages extends Component {
+   
     render() {
-        return (
-            <div>
-
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/signup" element={<SignUp />} />
-                    <Route path="/edit" element={<Edit />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/" element={<Login />} />
-                    <Route path="/newpost" element={<Post />} />
-
-            </div>
+        return this.state.loading === true ? <h2>Loading...</h2> : (
+            <Layout>
+                <Router>
+                    <Searchbar  />
+                    <Content>
+                    <div>
+                        <Switch>
+                            <Route path="/home" authenticated={this.state.authenticated} component={Home} />                           
+                            <Route path="/edit" authenticated={this.state.authenticated}  ><Edit /></Route>
+                            <Route path="/profile" authenticated={this.state.authenticated} component={Profile}  />
+                            <Route path="/" authenticated={this.state.authenticated}  ><Login /></Route>
+                            <Route path="/newpost" authenticated={this.state.authenticated}  ><Post /></Route>
+                            <Route path="/login" authenticated={this.state.authenticated}  ><Login/></Route>
+                            <Route path="/signup" authenticated={this.state.authenticated}  ><SignUp /></Route>
+                        </Switch>
+                    </div>
+                        
+                    </Content>                  
+                    
+                        
+                                       
+                </Router>
+            </Layout>
+                
+            
         )
 
     }
