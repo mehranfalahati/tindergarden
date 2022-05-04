@@ -21,7 +21,9 @@ class Feeds extends Component {
             snapshot.forEach((post) => {
                 const postID = post.id;
                 const postsObj = post.data();
-                posts.push({...postsObj, postID});
+                const postAuthor = post.data().user_id;
+                
+                posts.push({...postsObj, postID, postAuthor});
             });
             this.setState({posts: posts});
         });
@@ -52,8 +54,9 @@ class Feeds extends Component {
             return posts.map((post, index) => {
                 return (
                     <div key={index}>
-                        Posts1={post.post}
-                        <h3>{post.postID}</h3>
+                        <p>Posts1={post.post}</p>
+                    
+                        <h2>post Author:{post.postAuthor}</h2>
                         <button  onClick={() => this.deletePost(post.postID)} >delete </button>                       
                     </div>
                 )

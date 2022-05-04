@@ -4,6 +4,7 @@ import { Input, Button, message, Upload } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import {db, fsDb} from '../../../Firebase/firebase'
 import moment from "moment";
+import { Link } from "react-router-dom";
 const { TextArea } = Input
 
 
@@ -56,7 +57,7 @@ class Post extends Component {
     async uploadPost(event) {        
         event.preventDefault(); 
                
-        const user_id = getCurrentUser().uid;
+        const user_id = getCurrentUser().email;
         await db.collection("posts").add(
            {...this.state, user_id: user_id, createdAt: (new Date)}
         ).then(() => {
