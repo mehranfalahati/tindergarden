@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import { fsDb } from "../../../Firebase/firebase";
 import { getCurrentUser } from "../../Users/auth";
 
 class Feeds extends Component {
     constructor() {
         super();
         this.state = {
-            name: 'mehran'
+            posts: []
         }
     }
 
@@ -15,38 +16,56 @@ class Feeds extends Component {
 
     ////////////////////////
     fetchFeeds = () => {
-        //todo
+        fsDb.collection('posts').get().then((snapshot) => {
+            let posts = [];
+            snapshot.forEach((post) => {
+                const postID = post.id;
+                const postsObj = post.data();
+                posts.push({...postsObj, postID});
+            });
+            this.setState({posts: posts});
+        });
     }
 
     ///////////////////////
-    deletFeed = () => {
-
+    // deleteFeed = (documentID) => {
+    //     const newPosts = this.state.posts.filter((post) => {
+    //         return post.documentID !== documentID;
+    //     })
+    //     this.setState({posts: newPosts});
+    // }
+    async deletePost (event) {
+        console.log(event)
+        await fsDb.collection('posts').doc(event).delete()
+        .then(() => {
+            console.log("Document successfully deleteed!");
+            //this.uploadPost;
+        }).catch((error) => {
+            console.error("Error removing post: ", error);
+        })
     }
 
-    ///////////////////////
-    updateFeed = () => {
-
-    }
 
     ///////////////////////
-    renderFeeds = () => {
-        const feeds = this.state.name;
-        if (this.props.UserId === getCurrentUser().uid) {
-            return feeds.localeCompare((feed, index) => {
+    renderPosts = () => {
+        const posts = this.state.posts;        
+            return posts.map((post, index) => {
                 return (
                     <div key={index}>
-                        description={feed.description}
-                        
+                        Posts1={post.post}
+                        <h3>{post.postID}</h3>
+                        <button  onClick={() => this.deletePost(post.postID)} >delete </button>                       
                     </div>
                 )
             })
-        }
+        
     }
 
     render() {
         return (
             <div>
-                {this.renderFeeds()}
+                {this.renderPosts()}                
+
             </div>
         )
     }

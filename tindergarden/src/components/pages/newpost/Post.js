@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { getCurrentUser, signInWithGoogle, signup } from "../../Users/auth";
 import { Input, Button, message, Upload } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import {db} from '../../../Firebase/firebase'
+import {db, fsDb} from '../../../Firebase/firebase'
 import moment from "moment";
 const { TextArea } = Input
+
 
 
 
@@ -25,10 +26,13 @@ class Post extends Component {
         
     }
 
+    // postArray = [];
+    
     getPost() {
         db.collection('users').doc(getCurrentUser().uid).get()
         .then((doc) => {
             if (doc.exists) {
+                    // this.postArray.push(doc.data());
                     console.log("Document data:", doc.data());                    
                 } else {
                     // doc.data() will be undefined in this case
@@ -49,11 +53,11 @@ class Post extends Component {
 
 
 
-    uploadPost(event) {        
+    async uploadPost(event) {        
         event.preventDefault(); 
                
         const user_id = getCurrentUser().uid;
-        db.collection("posts").doc(user_id).set(
+        await db.collection("posts").add(
            {...this.state, user_id: user_id, createdAt: (new Date)}
         ).then(() => {
             console.log("post successfully posted!");
@@ -61,17 +65,37 @@ class Post extends Component {
         });
     }
 
+    // deletePost (event) {
+    //     fsDb.collection('posts').doc(getCurrentUser().uid).delete()
+    //     .then(() => {
+    //         console.log("Document successfully deleteed!");
+    //         //this.uploadPost;
+    //     }).catch((error) => {
+    //         console.error("Error removing post: ", error);
+    //     })
+    // }
+
 
     render() {
         return (
             <div>
-            <h2>Create a new Post</h2>
+                <h2>Create a new Post</h2>
                 <form onSubmit={this.uploadPost}>
-                    <input placeholder="What is in you mind?" type="text" onChange={this.renderPost} value={this.state.post} />
-                    <input placeholder="title" type='text' onChange={this.renderTitle} value={this.state.title} />
-                    <input type='submit' value="Alireza" />
-                </form>           
-                          
+                    <textarea placeholder="What is in you mind?" type="text" onChange={this.renderPost} value={this.state.post} required />                    
+                    <input type='submit' value="Post" />
+                    <input type='button' value='Delete post' onClick={this.deletePost} /> 
+                </form>      
+                {/* <div>
+                    {() => this.postArray((post) => {
+                        return (
+                            <div>
+                                <h2>post.post</h2>
+                                <h3>post.id</h3>
+                                <button onClick={this.deletePost(post.id)} />
+                            </div>
+                        )
+                    })}
+                </div>             */}
             </div>
         );
     }
