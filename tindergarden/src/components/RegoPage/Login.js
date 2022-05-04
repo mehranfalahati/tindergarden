@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Link} from "react-router-dom";
 import { signin, signInWithGoogle } from "../Users/auth";
+import login from "./login.css"
 
 
 
@@ -39,26 +40,28 @@ class Login extends Component {
     render() {
         return(
            
-            <div>           
+            <div className="background">           
              
-                <form autoComplete="off" onSubmit={this._handleSubmit}>
+                <form className="signupdiv" autoComplete="off" onSubmit={this._handleSubmit}>
                     <h1>
-                        Login to{' '}
-                        <Link to='/' >Tindergarden</Link>                        
+                        Log In                       
                     </h1>
-                    <p>
+                    <p className="p3">
                         Enter your username and password to Login
                     </p>
                     <div>
-                        <input type="email" name="email" placeholder="Email" onChange={this._handleChange} value={this.state.email} />
-                        <input type="password" name="password" placeholder="Password" onChange={this._handleChange} value={this.state.password} />
+                        <input className="input1" type="email" name="email" placeholder="Email" onChange={this._handleChange} value={this.state.email} />
+                        <input className="input1" type="password" name="password" placeholder="Password" onChange={this._handleChange} value={this.state.password} />
                     </div>
                     <div>
+                        
+                        <button className="button1" type="submit">Login</button>
+                        <p className="p2">Don't have an account? <Link to="/signup">Sign Up</Link> </p>
+
                         {this.state.error ? (<p>{this.state.error}</p>) : null}
-                        <button type="submit">Login</button>
+
                     </div>
                     
-                    <p>Don't have an account? <Link to="/signup">Sign Up</Link> </p>
                 </form>
             </div>
             
