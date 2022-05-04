@@ -7,57 +7,76 @@ import { Upload, Message, Button, message } from "antd"
 import { UploadOutlined } from '@ant-design/icons';
 import { Card, Input  } from 'antd';
 import { ActionTypes } from "@mui/base";
-import { fsDb } from "../../../Firebase/firebase";
+import { fsDb, storage } from "../../../Firebase/firebase";
 import { getCurrentUser } from "../../Users/auth";
 import Profile from "../profile/Profile";
-
-
+import {getStorage, ref} from "firebase/storage"
 
 const { TextArea } = Input;
+
+
 class Edit extends Component {
     constructor() {
         super();
         this.state = {
             showForm: false,
             name: '',
-            family: ''
+            userImage: '',
+            coverPhoto: '',
+            userDocId: '',            
         } 
         this.uploadFile = this.uploadFile.bind(this);
-
-        ////////Upload a file
 
         this.uploadProps = {
             name: 'file',
             action: this.uploadFile,
-            headers: {
+            header: {
                 authorization: 'authorization-text'
             },
             onChange(info) {
-                if (info.file.status !== 'uploading') {
+                if (info.file.status !== 'Uploading') {
                     console.log(info.file, info.fileList);
                 }
-                if (info.file.status === 'done'){
-                   message.success(`${info.file.name} is uploaded successfully!`) 
-                }               
-            },
+                if (info.file.status === 'done') {
+                    message.success(`${info.file.name} file uploaded successfully`);
+                }
+            }
+        }
+    }
+       
+
+        ////////Upload a file
+
+        uploadFile = (file) => {
+            let storageRef = storage.ref()
+            let fileRef = storageRef.child(file.name)
+            return fileRef.put(file).then(() => {
+                fsDb.collection("posts").doc(this.state.userDocId)
+                .set({ userImage: `gs://tindergarden-1508c.appspot.com/${file.name}`}, {merge: true}).then ((firebaseImage) => {
+                    fileRef.getDownloadURL().then((url) => {
+                        this.setState({userImage: url })
+                    })
+                })
+            })           
         };
         
-    }
+    
     ///Fetching user info
     componentDidMount(){
         this.fetchUserInfo();        
     }
     
     fetchUserInfo = () => {
-        fsDb.collection('user_profile').where('user_id', '==', getCurrentUser().uid).get()
+        fsDb.collection('users').where('user_id', '==', getCurrentUser().uid).get()
         .then((snapshots) => {
             snapshots.forEach((f) => {
-                console.log(f);
                 this.setState({
                     name: (f.data()).name,
+                    userImage: (f.data()).userImage,
+                    coverPhoto: (f.data()).coverPhoto,
                     userDocId: f.id                    
                 });
-                console.log(this.state.name);
+                console.log('current user:', getCurrentUser().uid);
             });        
         });
     };
@@ -69,10 +88,10 @@ class Edit extends Component {
 
  //// Update user info to DB
     saveProfile (data) {
-        fsDb.collection("user_profile").where("user_id", "==", getCurrentUser().uid).get()
+        fsDb.collection("users").where("user_id", "==", getCurrentUser().uid).get()
         .then((snapshots) => {
             snapshots.forEach((Profile) => {
-                fsDb.collection("user_profile").doc(Profile.id).set({
+                fsDb.collection("users").doc(Profile).set({
                     name: data.name},
                     {merge:true}).then(() => { this.fetchUserInfo();
 
@@ -87,7 +106,7 @@ class Edit extends Component {
  //// handler
     _handleSubmit = (event) => {
         event.preventDefault();
-        this.saveChanges(this.state)
+        this.saveProfile(this.state)
         this.setState({showForm: false})
     }
 
@@ -95,18 +114,13 @@ class Edit extends Component {
         this.setState({name: event.target.value});
     }
 
-    // _handleFamilyname = (event) => {
-    //     this.setState({family: event.target.value})
-    // }
-
-     
+        
  //// From
     showForm() {
         return (
             <div>
                 <form className="editPage">
                     <label className="labelOne">First Name:</label> <input onChange={this._handleName} type="text" value={this.state.name} required />
-                    <label className="labelTwo">Family Name:</label> <input onChange={this._handleFamilyname} type="text" value={this.state.family} required />
                     <Upload {...this.uploadProps}>
                         <Button icon={<UploadOutlined />}>Upload Profile Photo</Button>
                     </Upload>
@@ -126,7 +140,7 @@ class Edit extends Component {
                 <button onClick={() => this.setState({showForm: true})} type="primary" >Edit Profile</button>
                 <button><Link to="/newpost">New Post</Link></button>
                 {this.state.showForm ? this.showForm() : null}
-                <div> <UserInfo info= {this.state} imgURL= {this.state.userImage} /></div>
+                <div> <UserInfo info= {this.state} imgURL= {this.state.userImage} coverPhoto={this.state.coverPhoto} /></div>
             </div>
         )
     }
@@ -139,7 +153,8 @@ class UserInfo extends Component {
             <div>
                 <div>
                     <h2>Name:{info.name}</h2>
-                    <h2>Family Name:{info.family}</h2>
+                    <h2>UserImage:{info.userImage}</h2>
+                    <h2>coverPhoto:{info.coverPhoto}</h2>                    
                 </div>
             </div>
          )

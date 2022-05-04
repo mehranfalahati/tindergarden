@@ -49,7 +49,7 @@ class Searchbar extends Component {
                         <img src="/pictures/profile/1.jpeg" alt="profile-picture" className="searchImg"/>  
                     </Link>
                     
-                    <Link onClick={this._handleLogOut}>
+                    <Link  onClick={this._handleLogOut}>
                         Sign out
                     </Link>
                     <Link to="/edit">Edit</Link>

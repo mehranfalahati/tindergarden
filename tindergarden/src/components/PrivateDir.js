@@ -9,8 +9,7 @@ import {
 } from "react-router-dom";
 
 function PrivateDir({ component: Component, authenticated, ...rest }) {
-   console.log(rest);
-  return (
+   return (
       
     <Route    
       {...rest}
