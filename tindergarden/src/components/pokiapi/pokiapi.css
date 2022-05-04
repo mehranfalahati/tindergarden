@@ -1,0 +1,15 @@
+img {
+    height: 200px;
+}
+
+.pokemonContainer {
+    margin-left: 1em;
+}
+
+.pokemonInput {
+    margin-left: 7em;
+}
+
+.pokemonDetail {
+    text-align: center;
+}

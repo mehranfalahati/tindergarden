@@ -12,6 +12,8 @@ import Searchbar from "../../searchbar/Searchbar";
 import PrivateDir from "../../PrivateDir";
 import PublicDir from "../../PublicDir";
 
+import pages from "./pages.css"
+
 const {Content} = Layout
 
 class Pages extends Component {

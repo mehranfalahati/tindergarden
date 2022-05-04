@@ -32,7 +32,9 @@
     margin-left: 25px;
     color: blueviolet;
     cursor: pointer;
+    margin-top: 0.5em;
 }
+
 
 .search {
     background-color: white;

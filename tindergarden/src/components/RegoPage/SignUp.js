@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getCurrentUser, signInWithGoogle, signup } from "../Users/auth";
 import {Link} from "react-router-dom"
 import {fsDb} from "../../Firebase/firebase"
+import si from "./si.css"
 
 
 
@@ -51,21 +52,26 @@ class SignUp extends Component {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this._handleSubmit} >
+            <div className="background">
+
+                <form className="signupdiv" onSubmit={this._handleSubmit} >
                     <h1>
-                        Sign Up to {''}
+                        Sign Up {''}
                     </h1>
-                    <p>Fill in the form to create an account</p>
+                    <p className="p1">Fill the Form to Create an Account</p>
                     <div>
-                        <input type="email" name="email" placeholder="Email" onChange={this._handleChange} value={this.state.email} />
-                        <input type="password" name="password" placeholder="Password" onChange={this._handleChange} value={this.state.password} />
-                            {this.state.error ? <p>{this.state.error}</p> : null}
-                        <button type="submit">Sign Up</button>
-                        <button onClick={this.googleSignin} type='button'>Sign up with google</button>
+                        <input className="input1" type="email" name="email" placeholder="Email" onChange={this._handleChange} value={this.state.email} />
+                        <input className="input1" type="password" name="password" placeholder="Password" onChange={this._handleChange} value={this.state.password} />
+                        <button className="button1" type="submit">Sign Up</button>
+                        <button className="button2" onClick={this.googleSignin} type='button'>Sign up with Google</button>
+                        <p className="p2">Already have an account? <Link to='/'>Login</Link></p>
+
+                        {this.state.error ? <p>{this.state.error}</p> : null}
+
                     </div>
-                    <br/>
-                    <p>Already have an account? <Link to='/'>Login</Link></p>
+
+
+
                 </form>
             </div>
         );
