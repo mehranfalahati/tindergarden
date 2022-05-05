@@ -14,16 +14,16 @@ class Post extends Component {
     constructor() {
         super();
         this.state ={
-            title: '',
+            //title: '',
             post: '',
-            user_id: '',
+            post_id: '',
             createdAt: '',
             
         };
         this.getPost = this.getPost.bind(this);
         this.uploadPost = this.uploadPost.bind(this);
         this.renderPost = this.renderPost.bind(this);
-        this.renderTitle = this.renderTitle.bind(this);
+        //this.renderTitle = this.renderTitle.bind(this);
         
     }
 
@@ -47,9 +47,9 @@ class Post extends Component {
         console.log(event.target.value);
         this.setState({post: event.target.value})
     }
-    renderTitle (event) {
-        this.setState({title: event.target.value})
-    }
+    // renderTitle (event) {
+    //     this.setState({title: event.target.value})
+    // }
 
 
 
@@ -59,22 +59,12 @@ class Post extends Component {
                
         const user_id = getCurrentUser().email;
         await db.collection("posts").add(
-           {...this.state, user_id: user_id, createdAt: (new Date)}
+           {...this.state, post_id: user_id, createdAt: (new Date)}
         ).then(() => {
             console.log("post successfully posted!");
             
         });
     }
-
-    // deletePost (event) {
-    //     fsDb.collection('posts').doc(getCurrentUser().uid).delete()
-    //     .then(() => {
-    //         console.log("Document successfully deleteed!");
-    //         //this.uploadPost;
-    //     }).catch((error) => {
-    //         console.error("Error removing post: ", error);
-    //     })
-    // }
 
 
     render() {
@@ -83,20 +73,10 @@ class Post extends Component {
                 <h2>Create a new Post</h2>
                 <form onSubmit={this.uploadPost}>
                     <textarea placeholder="What is in you mind?" type="text" onChange={this.renderPost} value={this.state.post} required />                    
-                    <input type='submit' value="Post" />
-                    <input type='button' value='Delete post' onClick={this.deletePost} /> 
+                    <input type='submit' value="Post" />                    
                 </form>      
-                {/* <div>
-                    {() => this.postArray((post) => {
-                        return (
-                            <div>
-                                <h2>post.post</h2>
-                                <h3>post.id</h3>
-                                <button onClick={this.deletePost(post.id)} />
-                            </div>
-                        )
-                    })}
-                </div>             */}
+                <h2>All posts</h2>    
+
             </div>
         );
     }

@@ -20,6 +20,7 @@ import 'firebase/storage';
 const firebaseConfig = {
   apiKey: "AIzaSyDcKMpDiEnyCPj2N2hGermLJofyfIpyyYw",
   authDomain: "tindergarden-1508c.firebaseapp.com",
+  databaseURL: "gs://tindergarden-1508c.appspot.com",  
   projectId: "tindergarden-1508c",
   storageBucket: "tindergarden-1508c.appspot.com",
   messagingSenderId: "396906683042",
