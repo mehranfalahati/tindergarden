@@ -1,9 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { fsDb } from "../../../Firebase/firebase";
 import { getCurrentUser } from "../../Users/auth";
+import feeds from "./feeds.css"
 
 
 class Feeds extends Component {
+
     constructor() {
         super();
         this.state = {
@@ -33,12 +35,15 @@ class Feeds extends Component {
 
 
     renderPosts = () => {
+        
         const posts = this.state.posts;        
             return posts.map((post, index) => {
                 return (
-                    <div key={index}>
+                    <div className="feedspost" key={index}>
                         <p>Posts1={post.post}</p>                    
-                        <h2>post Author:{post.postAuthor}</h2>                                               
+                        <h2>post Author:{post.postAuthor}</h2>
+                        
+                                               
                     </div>
                 )
             })
@@ -47,8 +52,10 @@ class Feeds extends Component {
 
     render() {
         return (
-            <div>
-                {this.renderPosts()}                
+            <div className="feedsContainer">
+                <h2>TimeLine</h2>    
+
+                {this.renderPosts()}               
 
             </div>
         )
