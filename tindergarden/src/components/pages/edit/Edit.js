@@ -26,11 +26,11 @@ class Edit extends Component {
             coverPhoto: '',
             userDocId: '',            
         } 
-        this.uploadFile = this.uploadFile.bind(this);
+        
 
         this.uploadProps = {
             name: 'file',
-            action: this.uploadFile,
+            
             header: {
                 authorization: 'authorization-text'
             },
@@ -48,18 +48,34 @@ class Edit extends Component {
 
         ////////Upload a file
 
-        uploadFile = (file) => {
+        uploadUserImage = (file) => {
             let storageRef = storage.ref()
             let fileRef = storageRef.child(file.name)
             return fileRef.put(file).then(() => {
-                fsDb.collection("posts").doc(this.state.userDocId)
-                .set({ userImage: `gs://tindergarden-1508c.appspot.com/${file.name}`}, {merge: true}).then ((firebaseImage) => {
-                    fileRef.getDownloadURL().then((url) => {
+                fileRef.getDownloadURL().then((url) => {
+                fsDb.collection("users").doc(this.state.userDocId)
+                .set({ userImage: url}, {merge: true}).then ((firebaseImage) => {
+                    
                         this.setState({userImage: url })
                     })
                 })
             })           
         };
+
+        uploadCover = (file) => {
+            let storageRef = storage.ref()
+            let fileRef = storageRef.child(file.name)
+            return fileRef.put(file).then(() => {
+                fileRef.getDownloadURL().then((url) => {
+                fsDb.collection("users").doc(this.state.userDocId)
+                .set({ coverPhoto: url}, {merge: true}).then ((firebaseImage) => {
+                    
+                        this.setState({coverPhoto: url })
+                    })
+                })
+            })           
+        };
+        
         
     
     ///Fetching user info
@@ -68,7 +84,7 @@ class Edit extends Component {
     }
     
     fetchUserInfo = () => {
-        fsDb.collection('user_profiles').where('user_id', '==', getCurrentUser().uid).get()
+        fsDb.collection('users').where('user_id', '==', getCurrentUser().uid).get()
         .then((snapshots) => {
             snapshots.forEach((f) => {
                 this.setState({
@@ -84,12 +100,12 @@ class Edit extends Component {
 
 
  //// Update user info to DB
-    saveProfile (data) {
-        fsDb.collection("user_profiles").where("user_id", "==", getCurrentUser().uid).get()
-        .then((snapshots) => {
-            snapshots.forEach((Profile) => {
-                fsDb.collection("user_profiles").doc(Profile).set({
-                    name: data.name},
+    saveProfile (data) {        
+        fsDb.collection("users").where("user_id", "==", getCurrentUser().uid).get()
+        .then((snapshots) => {            
+            snapshots.forEach((Profile) => {                
+                fsDb.collection("users").doc(this.state.userDocId).set({
+                    name: data.name, bio: data.bio},
                     {merge:true}).then(() => { this.fetchUserInfo();
 
                 })
@@ -122,11 +138,11 @@ class Edit extends Component {
             <div>
                 <form className="editPage">
                     <label className="labelOne">My Name:</label> <input onChange={this._handleName} type="text" value={this.state.name} required placeholder={this.props.name} />
-                    <label>About me:</label><input onChange={this._handlebio} type="textarea" value={this.state.bio} />
-                    <Upload {...this.uploadProps}>
+                    <label>About me:</label><textarea onChange={this._handlebio} type="text" value={this.state.bio} />
+                    <Upload {...this.uploadProps} action={this.uploadUserImage}>
                         <Button icon={<UploadOutlined />}>Upload Profile Photo</Button>
                     </Upload>
-                    <Upload {...this.uploadProps}>
+                    <Upload {...this.uploadProps} action={this.uploadCover}>
                         <Button icon={<UploadOutlined />}>Upload Cover Photo</Button>
                     </Upload>
 
