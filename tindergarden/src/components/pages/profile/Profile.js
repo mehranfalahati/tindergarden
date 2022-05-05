@@ -56,7 +56,7 @@ class Profile extends Component {
                             <UserProfile userId={getCurrentUser().uid}/>
                         </div>
                         <Link className="edit" to="/edit"><Edit /></Link>
-                        <p>Here are your posts:</p>
+                        <p className="profilepostp">All Your Posts</p>
                          <UserPost />
                     </div>   
 
@@ -119,9 +119,9 @@ class UserPost extends Component {
                               
                 return (           
                     
-                    <div key={index}>
+                    <div className="postprofile" key={index}>
                         {/* <p>You created this post on: {post.postTime}</p> */}
-                        <p>Posts={post.post}</p>                   
+                        <p>{post.post}</p>                   
                             <button  onClick={() => this.deletePost(post.postID)} >delete </button>                       
                     </div>
                     

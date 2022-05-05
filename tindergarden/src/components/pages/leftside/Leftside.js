@@ -37,7 +37,7 @@ class Leftside extends Component {
         const users = this.state.users;
             return users.map((user, index) => {
                 return (
-                    <div key={index}>
+                    <div className="leftsideUser" key={index}>
                          <p>{user.userName ? user.name : user.userEmail}</p> 
                         
                     </div>
@@ -48,6 +48,7 @@ class Leftside extends Component {
     render() {
         return (
             <div className="leftSide">
+                <h2 className="leftsideh2">All Users</h2>
                 {this.renderUsers()}
                 
             </div>
