@@ -102,6 +102,7 @@ class UserPost extends Component {
         await fsDb.collection('posts').doc(event).delete()
         .then(() => {
             console.log("Document successfully deleteed!");
+            this.fetchFeeds();
             //this.uploadPost;
         }).catch((error) => {
             console.error("Error removing post: ", error);

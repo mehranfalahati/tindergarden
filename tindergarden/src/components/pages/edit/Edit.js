@@ -173,9 +173,9 @@ class UserInfo extends Component {
          return (
             <div>
                 <div>
-                    <h2>Name:{info.name}</h2>
+                    {/* <h2>Name:{info.name}</h2>
                     <h2>UserImage:{info.userImage}</h2>
-                    <h2>coverPhoto:{info.coverPhoto}</h2>                    
+                    <h2>coverPhoto:{info.coverPhoto}</h2>                     */}
                 </div>
             </div>
          )
