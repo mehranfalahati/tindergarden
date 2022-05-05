@@ -46,7 +46,7 @@ class Post extends Component {
 
     renderPost (event) {
         console.log(event.target.value);
-        this.setState({post: event.target.value})
+        this.setState({post: event.target.value});
     }
     // renderTitle (event) {
     //     this.setState({title: event.target.value})
