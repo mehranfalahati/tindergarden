@@ -40,10 +40,8 @@ class Feeds extends Component {
             return posts.map((post, index) => {
                 return (
                     <div className="feedspost" key={index}>
-                        <p>Posts1={post.post}</p>                    
-                        <h2>post Author:{post.postAuthor}</h2>
-                        
-                                               
+                        <h2 className="userh2">Created by:{post.postAuthor}</h2>
+                        <p className="userp">{post.post}</p>                    
                     </div>
                 )
             })
@@ -53,7 +51,7 @@ class Feeds extends Component {
     render() {
         return (
             <div className="feedsContainer">
-                <h2>TimeLine</h2>    
+                <h2 className="feedsh2">TimeLine</h2>    
 
                 {this.renderPosts()}               
 

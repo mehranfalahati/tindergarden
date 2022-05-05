@@ -1,44 +1,68 @@
-.profilePicture {
-    height: 320px;
-    position: relative;
-    flex: 4;
-}
+@media (min-width: 480px) {
+    .profilePicture {
+        height: 320px;
+        position: relative;
+        flex: 4;
+    }
+    
+    .profileCover {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+    
+    .profilePic {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 150px;
+        border: 3px solid white;
+    }
+    
+    .userInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 40px;
+    }
+    
+    .userName {
+        font-size: 25px;
+    }
+    
+    .bio {
+        font-size: 20px;
+        margin-top: -10px;
+    }
+    
+    .pokemonProfile {
+        padding-left: 2em;
+    }
 
-.profileCover {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
+    .postprofile {
+        -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+        box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+        padding-left: 1em;
+    }
 
-.profilePic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    position: absolute;
-    margin: auto;
-    left: 0;
-    right: 0;
-    top: 150px;
-    border: 3px solid white;
-}
-
-.userInfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 40px;
-}
-
-.userName {
-    font-size: 25px;
-}
-
-.bio {
-    font-size: 20px;
-    margin-top: -10px;
-}
-
-.pokemonProfile {
-    padding-left: 2em;
+    .profilepostp{
+        -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+        box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+        text-align: center;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        font-size: 25px;
+        letter-spacing: 2px;
+        word-spacing: 2px;
+        color: #000000;
+        font-weight: normal;
+        text-decoration: none;
+        font-style: normal;
+        font-variant: normal;
+        text-transform: none;
+    }
 }

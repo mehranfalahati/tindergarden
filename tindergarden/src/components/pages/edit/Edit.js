@@ -1,5 +1,6 @@
 
 import { ResetTvRounded, TripOriginSharp } from "@mui/icons-material";
+import edit from "./edit.css"
 import { render } from "@testing-library/react";
 import React, { Component }  from "react";
 import { Routes, Route, Link } from "react-router-dom";
@@ -11,6 +12,7 @@ import { fsDb, storage } from "../../../Firebase/firebase";
 import { getCurrentUser } from "../../Users/auth";
 import Profile from "../profile/Profile";
 import {getStorage, ref} from "firebase/storage"
+
 
 const { TextArea } = Input;
 
@@ -137,17 +139,18 @@ class Edit extends Component {
         return (
             <div>
                 <form className="editPage">
-                    <label className="labelOne">My Name:</label> <input onChange={this._handleName} type="text" value={this.state.name} required placeholder={this.props.name} />
-                    <label>About me:</label><textarea onChange={this._handlebio} type="text" value={this.state.bio} />
+                    <label className="labelOne">Name:</label> <input className="labelOne" onChange={this._handleName} type="text" value={this.state.name} required placeholder={this.props.name} />
+                    <hr></hr>
+                    <label className="labelTwo">About me:</label><textarea className="labelThree" onChange={this._handlebio} type="text" value={this.state.bio} />
                     <Upload {...this.uploadProps} action={this.uploadUserImage}>
-                        <Button icon={<UploadOutlined />}>Upload Profile Photo</Button>
+                        <Button className="uploadButton" icon={<UploadOutlined />}>Upload Profile Photo</Button>
                     </Upload>
                     <Upload {...this.uploadProps} action={this.uploadCover}>
-                        <Button icon={<UploadOutlined />}>Upload Cover Photo</Button>
+                        <Button className="uploadButton" icon={<UploadOutlined />}>Upload Cover Photo</Button>
                     </Upload>
 
-                    <button onClick={this._handleSubmit}>Save</button>
-                    <button onClick={() => this.setState({showForm: false})}>Cancel</button>
+                    <button className="saveEdit" onClick={this._handleSubmit}>Save</button>
+                    <button className="saveEdit" onClick={() => this.setState({showForm: false})}>Cancel</button>
                 </form>
             </div>
         )
