@@ -71,13 +71,12 @@ class Post extends Component {
     render() {
         return (
             <div className="postContainer">
-                <h2 className="h2post">Create a new Post</h2>
+                <h2 className="h2post">Create a New Post</h2>
                 <form onSubmit={this.uploadPost}>
-                    <textarea placeholder="What is in you mind?" type="text" onChange={this.renderPost} value={this.state.post} required />                    
-                    <input type='submit' value="Post" />                    
+                    <textarea className="postBox" placeholder="What is in you mind?" type="text" onChange={this.renderPost} value={this.state.post} required />                    
+                    <input className="postbutton" type='submit' value="Post" />                    
                 </form>      
-                <h2>All posts</h2>    
-
+                <br></br>
             </div>
         );
     }

@@ -1,8 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { fsDb } from "../../../Firebase/firebase";
 import { getCurrentUser } from "../../Users/auth";
+import feeds from "./feeds.css"
 
 class Feeds extends Component {
+
     constructor() {
         super();
         this.state = {
@@ -29,6 +31,8 @@ class Feeds extends Component {
         });
     }
 
+    
+
     ///////////////////////
     // deleteFeed = (documentID) => {
     //     const newPosts = this.state.posts.filter((post) => {
@@ -50,19 +54,15 @@ class Feeds extends Component {
 
     ///////////////////////
     renderPosts = () => {
+        
         const posts = this.state.posts;        
             return posts.map((post, index) => {
                 return (
-                    <div key={index}>
-<<<<<<< HEAD
-                        <h1>post Author:{post.postAuthor}</h1>
-                        <p>Posts1={post.post}</p>
-                        <button  onClick={() => this.deletePost(post.postID)} >delete </button>                       
-=======
+                    <div className="feedspost" key={index}>
                         <p>Posts1={post.post}</p>                    
                         <h2>post Author:{post.postAuthor}</h2>
+                        
                                                
->>>>>>> ec4ecbe3feb5ed7148cc94ad36ff6ab879e50ec5
                     </div>
                 )
             })
@@ -71,8 +71,10 @@ class Feeds extends Component {
 
     render() {
         return (
-            <div>
-                {this.renderPosts()}                
+            <div className="feedsContainer">
+                <h2>TimeLine</h2>    
+
+                {this.renderPosts()}               
 
             </div>
         )

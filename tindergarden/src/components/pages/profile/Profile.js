@@ -29,8 +29,12 @@ class Profile extends Component {
                         <Link className="edit" to="/edit"><Edit /></Link>
                         <p>Here are your posts:</p>
                          <UserPost />
-                    </div>      
-                         <Rightside />
+                    </div>   
+
+                    
+                    <Rightside/>
+
+                         
                          
                 </div>
 

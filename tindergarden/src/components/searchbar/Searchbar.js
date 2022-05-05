@@ -16,7 +16,8 @@ class Searchbar extends Component {
             <div className="searchContainer"> 
 
                 <div className="searchLeft">
-                    <span className="appName">TinderGarden</span>
+                    {/* <span className="appName">TinderGarden</span> */}
+                    <img className="appName" src="/pictures/logo.jpg" />
                 </div>
             
                 <div className="searchCenter">
@@ -28,32 +29,32 @@ class Searchbar extends Component {
 
                 <div className="searchRight">
                     <div className="links">
-                    <span className="homeLink"><Link to="/home">Home</Link></span>
+                    <span className="homeLink"><Link className="link" to="/home">Home</Link></span>
                     </div>
 
                     <div className="rightIcons">
                         <div className="iconItem">
                             <Person />
-                            <span className="iconNumber">1</span>
+                            <span className="iconNumber">?</span>
                         </div>
                         <div className="iconItem">
                             <Chat />
-                            <span className="iconNumber">1</span>
+                            <span className="iconNumber">?</span>
                         </div>
                         <div className="iconItem">
                             <Notifications />
-                            <span className="iconNumber">1</span>
+                            <span className="iconNumber">?</span>
                         </div>
                     </div>
                     <Link to="/profile">
                         <img src="/pictures/profile/1.jpeg" alt="profile-picture" className="searchImg"/>  
                     </Link>
                     
-                    <Link  onClick={this._handleLogOut}>
+                    <Link className="link" onClick={this._handleLogOut}>
                         Sign out
                     </Link>
-                    <Link to="/edit">Edit</Link>
-                    <Link to="/profile">Profile</Link>
+                    {/* <Link to="/edit">Edit</Link> */}
+                    {/* <Link to="/profile">Profile</Link> */}
                 </div>
             </div>
         )
