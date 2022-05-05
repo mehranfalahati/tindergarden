@@ -3,8 +3,42 @@ import searchbar from "./searchbar.css";
 import {Search, Person, Chat, Notifications} from "@mui/icons-material";
 import { Routes, Route, Link } from "react-router-dom";
 import { signOut } from "../Users/auth";
+import {fsDb} from "../../Firebase/firebase";
+import {getCurrentUser} from "../Users/auth"
 
 class Searchbar extends Component {
+    constructor() {
+        super();
+        this.state = {
+            showForm: false,
+            name: '',
+            bio: '',
+            userImage: '',
+            coverPhoto: '',
+            userDocId: '',            
+        }
+    }
+
+    componentDidMount(){
+        this.fetchUserInfo();        
+    }
+
+    fetchUserInfo = () => {
+        fsDb.collection('users').where('user_id', '==', getCurrentUser().uid).get()
+        .then((snapshots) => {
+            snapshots.forEach((f) => {
+                this.setState({
+                    name: (f.data()).name,
+                    userImage: (f.data()).userImage,
+                    coverPhoto: (f.data()).coverPhoto,
+                    userDocId: f.id                    
+                });                
+            });        
+        });
+    };
+
+
+
     _handleLogOut = () => {
         signOut().then(() => {
             window.location.href = '/';
@@ -46,7 +80,7 @@ class Searchbar extends Component {
                         </div>
                     </div>
                     <Link to="/profile">
-                        <img src="/pictures/profile/1.jpeg" alt="profile-picture" className="searchImg"/>  
+                        <img src={this.state.userImage} alt="profile-picture" className="searchImg"/>  
                     </Link>
                     
                     <Link  onClick={this._handleLogOut}>

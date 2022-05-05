@@ -14,9 +14,10 @@ class Feeds extends Component {
         this.fetchFeeds();
     }
 
-    ////////////////////////
+   
     fetchFeeds = () => {
-        fsDb.collection('posts').get().then((snapshot) => {
+        fsDb.collection('posts').get()
+        .then((snapshot) => {
             let posts = [];
             snapshot.forEach((post) => {
                 const postID = post.id;
@@ -29,26 +30,7 @@ class Feeds extends Component {
         });
     }
 
-    ///////////////////////
-    // deleteFeed = (documentID) => {
-    //     const newPosts = this.state.posts.filter((post) => {
-    //         return post.documentID !== documentID;
-    //     })
-    //     this.setState({posts: newPosts});
-    // }
-    // async deletePost (event) {
-    //     console.log(event)
-    //     await fsDb.collection('posts').doc(event).delete()
-    //     .then(() => {
-    //         console.log("Document successfully deleteed!");
-    //         //this.uploadPost;
-    //     }).catch((error) => {
-    //         console.error("Error removing post: ", error);
-    //     })
-    // }
 
-
-    ///////////////////////
     renderPosts = () => {
         const posts = this.state.posts;        
             return posts.map((post, index) => {
