@@ -10,7 +10,7 @@ import {auth} from "../../../Firebase/firebase";
 import { Layout } from "antd";
 import Searchbar from "../../searchbar/Searchbar";
 
-import pages from "./Pages.css"
+import pages from "./pages.css"
 
 const {Content} = Layout
 

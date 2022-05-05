@@ -65,6 +65,8 @@ class Searchbar extends Component {
                     <div className="links">
                     <span className="homeLink"><Link className="link" to="/home">Home</Link></span>
                     </div>
+                    <Link className="link" to="/edit">Edit</Link>
+
 
                     <div className="rightIcons">
                         <div className="iconItem">
@@ -81,13 +83,12 @@ class Searchbar extends Component {
                         </div>
                     </div>
                     <Link to="/profile">
-                        <img src={this.state.userImage} alt="profile-picture" className="searchImg"/>  
+                        <img src={this.state.userImage || "/pictures/profile/default.png"} alt="profile-picture" className="searchImg"/>  
                     </Link>
                     
                     <Link className="link" onClick={this._handleLogOut}>
                         Sign out
                     </Link>
-                    {/* <Link to="/edit">Edit</Link> */}
                     {/* <Link to="/profile">Profile</Link> */}
                 </div>
             </div>

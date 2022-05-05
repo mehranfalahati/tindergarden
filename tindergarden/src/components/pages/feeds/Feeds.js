@@ -42,8 +42,8 @@ class Feeds extends Component {
                 return (
                     <div className="feedspost" key={index}>
                         <h2 className="userh2">Created by:{post.postAuthor}</h2>
-                        <h4>Posted:{post.postTime}</h4>
                         <p className="userp">{post.post}</p>                    
+                        <h4 className="userh4">Posted:{post.postTime}</h4>
                     </div>
                 )
             })

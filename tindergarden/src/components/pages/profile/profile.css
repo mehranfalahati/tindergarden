@@ -1,4 +1,8 @@
 @media (min-width: 480px) {
+    .mainContainer {
+        height: 100vh;
+    }
+
     .profilePicture {
         height: 320px;
         position: relative;
@@ -45,14 +49,25 @@
     }
 
     .postprofile {
-        -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
-        box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+        -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 0px 0px 23px 9px rgba(165,0,0,0.61); 
+        box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 0px 0px 23px 9px rgba(165,0,0,0.61);
         padding-left: 1em;
+        background-color: white;
+        border-radius: 1em;
+        padding-bottom: 1em;
+        padding-top: 0.5em;
+        margin-top: 1em;
+    }
+
+    .profilep {
+        text-align: right;
+        margin-right: 1em;
+        font-size: 10px;
     }
 
     .profilepostp{
-        -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
-        box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+        -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 0px 0px 23px 9px rgba(27,11,165,0.61); 
+        box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 0px 0px 23px 9px rgba(27,11,165,0.61);
         text-align: center;
         font-family: "Comic Sans MS", cursive, sans-serif;
         font-size: 25px;
@@ -64,5 +79,7 @@
         font-style: normal;
         font-variant: normal;
         text-transform: none;
+        background-color: white;
+        border-radius: 1em;
     }
 }

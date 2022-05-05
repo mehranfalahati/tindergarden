@@ -115,8 +115,8 @@ class UserPost extends Component {
                 return (           
                     
                     <div className="postprofile" key={index}>
-                        <p>You created this post on: {post.postTime}</p>
-                        <p>{post.post}</p>                   
+                        <p>{post.post}</p>       
+                        <p className="profilep">Created on: {post.postTime}</p>
                             <button  onClick={() => this.deletePost(post.postID)} >delete </button>                       
                     </div>
                     
