@@ -4,12 +4,7 @@ import Post from "../newpost/Post";
 import Feeds from "../feeds/Feeds";
 
 class Mainpage extends Component {
-    constructor(){
-        super();
-        this.state = {
-            postRequest: ''
-        }
-    }
+
     render() {
         return (
             <div className="feed">

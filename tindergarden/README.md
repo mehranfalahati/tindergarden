@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Tindergarden
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Description
 
-## Available Scripts
+This project is a social media app for kids to surf the internet in a safe environment and keep in touch with each other. Kids can enter a Pokemon's name and enjoy!.
 
-In the project directory, you can run:
+Live Demo: [Tindergarden](#)
 
-### `npm start`
+### How to get start
 
-Runs the app in the development mode.\
+In the project directory, run the following commands 
+```
+To install dependencies
+npm install
+
+To run the server
+npm run start
+```
+
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Technologies
 
-### `npm run build`
+- React.js
+- Firebase (Google Cloud)
+- Firestore database / No SQL db used for storing users and posts including images
+- Pokemon API
+- Mobile first design / CSS
+- Ant Design 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Bugs and Issues
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Current bugs:
+- update posts automatically when users send a post.
 
-### `npm run eject`
+### Future works
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Add search functionality to the app to let users search for their friends.
+- Add location to users and let them find each other based on the distance (using google maps API).
+- Add event feature to the app and let kids gather and play together.
+- Add notification features to the profile page to inform users.
+- Add simple games to the app and let different users play online with each other.
+- Add chat feature to the app.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Contributors
+This project was a collaboration work of the following contributors:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Alireza Talaei [https://github.com/a1364t](https://github.com/a1364t)
+- Mehran Falahati [https://github.com/mehranfalahati](https://github.com/mehranfalahati)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
