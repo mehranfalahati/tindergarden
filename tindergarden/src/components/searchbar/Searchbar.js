@@ -83,7 +83,7 @@ class Searchbar extends Component {
                         </div>
                     </div>
                     <Link to="/profile">
-                        <img src={this.state.userImage || "/pictures/profile/default.png"} alt="profile-picture" className="searchImg"/>  
+                        <img src={this.state.userImage || "/pictures/profile/d1.jpg"} alt="profile-picture" className="searchImg"/>  
                     </Link>
                     
                     <Link className="link" onClick={this._handleLogOut}>

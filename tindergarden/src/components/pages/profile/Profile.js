@@ -51,8 +51,8 @@ class Profile extends Component {
                 <div className="mainContainer">
                     <Leftside />
                     <div className="profilePicture">
-                        <img className="profilePic" src={this.state.userImage} />
-                        <img className="profileCover" src={this.state.coverPhoto}/>
+                        <img className="profilePic" src={this.state.userImage || "/pictures/profile/d1.jpg"} />
+                        <img className="profileCover" src={this.state.coverPhoto || "/pictures/cover/dc.jpg"}/>
                         <div className="userInfo">
                             <UserProfile userId={getCurrentUser().uid}/>
                         </div>
