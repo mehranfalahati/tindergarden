@@ -4,6 +4,9 @@ img {
 
 .pokemonContainer {
     margin-left: 1em;
+    position: sticky;
+    top: 50px;
+
 }
 
 .pokemonInput {

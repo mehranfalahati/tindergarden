@@ -36,9 +36,15 @@ class Feeds extends Component {
             return posts.map((post, index) => {
                 return (
                     <div key={index}>
+<<<<<<< HEAD
+                        <h1>post Author:{post.postAuthor}</h1>
+                        <p>Posts1={post.post}</p>
+                        <button  onClick={() => this.deletePost(post.postID)} >delete </button>                       
+=======
                         <p>Posts1={post.post}</p>                    
                         <h2>post Author:{post.postAuthor}</h2>
                                                
+>>>>>>> ec4ecbe3feb5ed7148cc94ad36ff6ab879e50ec5
                     </div>
                 )
             })
