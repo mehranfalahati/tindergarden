@@ -5,6 +5,7 @@ import { UploadOutlined } from '@ant-design/icons';
 import {db, fsDb} from '../../../Firebase/firebase'
 import moment from "moment";
 import { Link } from "react-router-dom";
+import post from "./post.css"
 const { TextArea } = Input
 
 
@@ -79,12 +80,12 @@ class Post extends Component {
 
     render() {
         return (
-            <div>
-                <h2>Create a new Post</h2>
+            <div className="postContainer">
+                <h2 className="h2post">Create a new Post</h2>
                 <form onSubmit={this.uploadPost}>
-                    <textarea placeholder="What is in you mind?" type="text" onChange={this.renderPost} value={this.state.post} required />                    
-                    <input type='submit' value="Post" />
-                    <input type='button' value='Delete post' onClick={this.deletePost} /> 
+                    <textarea className="postBox" placeholder="What is in you mind?" type="text" onChange={this.renderPost} value={this.state.post} required />                    
+                    <input className="postbutton1" type='submit' value="Post" />
+                    <input className="postbutton2" type='button' value='Delete post' onClick={this.deletePost} /> 
                 </form>      
                 {/* <div>
                     {() => this.postArray((post) => {
