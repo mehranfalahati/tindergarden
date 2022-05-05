@@ -32,16 +32,16 @@ const Pokiapi = () => {
 
 
     return (
-        <div className="pokemonContainer">
-            <form onSubmit={handleSubmit}>
+        <div className="pokemonCon">
+            <form className="pokemonContainer" onSubmit={handleSubmit}>
                 <h3>Enter Pokemon's Name and Press Enter</h3>
                 <label>
-                    <input className="pokemonInput" type="text" onChange={handleChange} placeholder="Enter Your Pokemon"/>
+                    <input className="pokemonInput" type="text" onChange={handleChange} placeholder="Pikachu"/>
                 </label>
             </form>
             {pokemonDate.map((data) => {
                 return(
-                    <div className="pokemonDetail">
+                    <div  className="pokemonDetail">
                         <img src={data.sprites["front_default"]} />
                         <div>Type: {pokemonType}</div>
 
@@ -58,34 +58,3 @@ const Pokiapi = () => {
 }
 
 export default Pokiapi;
-
-// class Pokiapi extends Component {
-//     constructor() {
-//         super();
-//         this.state = {
-//             pokis: []
-//         }
-//         this._fetchPoki = this._fetchPoki.bind(this)
-//     }
-
-//     _fetchPoki() {
-
-//         axios.get('https://pokeapi.co/api/v2/pokemon?json').then((response) => {
-//             //const newPoki = [response.data.species.url];
-//             console.log(response.data.results)
-//             //this.setState({pokis: newPoki})
-//         })
-//     }
-//     render() {
-//         return(
-//             <div>
-//                 <h1>poki pic coming!</h1>
-
-//                 <button onClick={this._fetchPoki}>Press to get you poki</button>
-//                 {this.state.pokis.map((poki) => <p>{poki}</p>)}
-//             </div>
-//         )
-//     }
-// }
-
-// export default Pokiapi;

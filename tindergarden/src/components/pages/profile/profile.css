@@ -1,7 +1,7 @@
 .profilePicture {
     height: 320px;
     position: relative;
-    flex: 3.5;
+    flex: 4;
 }
 
 .profileCover {
@@ -37,4 +37,8 @@
 .bio {
     font-size: 20px;
     margin-top: -10px;
+}
+
+.pokemonProfile {
+    padding-left: 2em;
 }

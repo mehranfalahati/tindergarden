@@ -10,8 +10,37 @@ import {currentUser, getCurrentUser} from "../../Users/auth";
 import {fsDb} from "../../../Firebase/firebase";
 
 
-class Profile extends Component {
 
+
+class Profile extends Component {
+    constructor(){
+        super();
+        this.state = {
+            name: '',
+            userImage: '',
+            coverPhoto: '',
+            userDocId: '',
+        }
+    }
+
+
+    fetchUserInfo = () => {
+        fsDb.collection('users').where('user_id', '==', getCurrentUser().uid).get()
+        .then((snapshots) => {
+            snapshots.forEach((f) => {
+                this.setState({
+                    name: (f.data()).name,
+                    userImage: (f.data()).userImage,
+                    coverPhoto: (f.data()).coverPhoto,
+                    userDocId: f.id                    
+                });                
+            });        
+        });
+    };
+
+    componentDidMount = () => {
+        this.fetchUserInfo();
+    }
 
 
 
@@ -21,16 +50,20 @@ class Profile extends Component {
                 <div className="mainContainer">
                     <Leftside />
                     <div className="profilePicture">
-                        <img className="profilePic" src="/pictures/profile/1.jpeg" />
-                        <img className="profileCover" src="/pictures/cover/1.jpeg"/>
+                        <img className="profilePic" src={this.state.userImage} />
+                        <img className="profileCover" src={this.state.coverPhoto}/>
                         <div className="userInfo">
                             <UserProfile userId={getCurrentUser().uid}/>
                         </div>
                         <Link className="edit" to="/edit"><Edit /></Link>
                         <p>Here are your posts:</p>
                          <UserPost />
-                    </div>      
-                         <Rightside />
+                    </div>   
+
+                    
+                    <Rightside/>
+
+                         
                          
                 </div>
 

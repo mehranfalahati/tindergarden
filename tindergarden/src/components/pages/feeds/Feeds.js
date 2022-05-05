@@ -1,8 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { fsDb } from "../../../Firebase/firebase";
 import { getCurrentUser } from "../../Users/auth";
+import feeds from "./feeds.css"
 
 class Feeds extends Component {
+
     constructor() {
         super();
         this.state = {
@@ -14,9 +16,10 @@ class Feeds extends Component {
         this.fetchFeeds();
     }
 
-    ////////////////////////
+   
     fetchFeeds = () => {
-        fsDb.collection('posts').get().then((snapshot) => {
+        fsDb.collection('posts').get()
+        .then((snapshot) => {
             let posts = [];
             snapshot.forEach((post) => {
                 const postID = post.id;
@@ -29,33 +32,16 @@ class Feeds extends Component {
         });
     }
 
-    ///////////////////////
-    // deleteFeed = (documentID) => {
-    //     const newPosts = this.state.posts.filter((post) => {
-    //         return post.documentID !== documentID;
-    //     })
-    //     this.setState({posts: newPosts});
-    // }
-    // async deletePost (event) {
-    //     console.log(event)
-    //     await fsDb.collection('posts').doc(event).delete()
-    //     .then(() => {
-    //         console.log("Document successfully deleteed!");
-    //         //this.uploadPost;
-    //     }).catch((error) => {
-    //         console.error("Error removing post: ", error);
-    //     })
-    // }
 
-
-    ///////////////////////
     renderPosts = () => {
+        
         const posts = this.state.posts;        
             return posts.map((post, index) => {
                 return (
-                    <div key={index}>
+                    <div className="feedspost" key={index}>
                         <p>Posts1={post.post}</p>                    
                         <h2>post Author:{post.postAuthor}</h2>
+                        
                                                
                     </div>
                 )
@@ -65,8 +51,10 @@ class Feeds extends Component {
 
     render() {
         return (
-            <div>
-                {this.renderPosts()}                
+            <div className="feedsContainer">
+                <h2>TimeLine</h2>    
+
+                {this.renderPosts()}               
 
             </div>
         )
