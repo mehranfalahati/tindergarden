@@ -21,6 +21,7 @@ class Edit extends Component {
         this.state = {
             showForm: false,
             name: '',
+            bio: '',
             userImage: '',
             coverPhoto: '',
             userDocId: '',            
@@ -67,7 +68,7 @@ class Edit extends Component {
     }
     
     fetchUserInfo = () => {
-        fsDb.collection('users').where('user_id', '==', getCurrentUser().uid).get()
+        fsDb.collection('user_profiles').where('user_id', '==', getCurrentUser().uid).get()
         .then((snapshots) => {
             snapshots.forEach((f) => {
                 this.setState({
@@ -75,23 +76,19 @@ class Edit extends Component {
                     userImage: (f.data()).userImage,
                     coverPhoto: (f.data()).coverPhoto,
                     userDocId: f.id                    
-                });
-                console.log('current user:', getCurrentUser().uid);
+                });                
             });        
         });
     };
 
 
-    uploadFile = (file) => {
-        //todo
-    }
 
  //// Update user info to DB
     saveProfile (data) {
-        fsDb.collection("users").where("user_id", "==", getCurrentUser().uid).get()
+        fsDb.collection("user_profiles").where("user_id", "==", getCurrentUser().uid).get()
         .then((snapshots) => {
             snapshots.forEach((Profile) => {
-                fsDb.collection("users").doc(Profile).set({
+                fsDb.collection("user_profiles").doc(Profile).set({
                     name: data.name},
                     {merge:true}).then(() => { this.fetchUserInfo();
 
@@ -114,15 +111,23 @@ class Edit extends Component {
         this.setState({name: event.target.value});
     }
 
+    _handlebio = (event) => {
+        this.setState({bio: event.target.value});
+    }
+
         
  //// From
     showForm() {
         return (
             <div>
                 <form className="editPage">
-                    <label className="labelOne">First Name:</label> <input onChange={this._handleName} type="text" value={this.state.name} required />
+                    <label className="labelOne">My Name:</label> <input onChange={this._handleName} type="text" value={this.state.name} required placeholder={this.props.name} />
+                    <label>About me:</label><input onChange={this._handlebio} type="textarea" value={this.state.bio} />
                     <Upload {...this.uploadProps}>
                         <Button icon={<UploadOutlined />}>Upload Profile Photo</Button>
+                    </Upload>
+                    <Upload {...this.uploadProps}>
+                        <Button icon={<UploadOutlined />}>Upload Cover Photo</Button>
                     </Upload>
 
                     <button onClick={this._handleSubmit}>Save</button>

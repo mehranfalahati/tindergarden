@@ -21,7 +21,7 @@ class Feeds extends Component {
             snapshot.forEach((post) => {
                 const postID = post.id;
                 const postsObj = post.data();
-                const postAuthor = post.data().user_id;
+                const postAuthor = post.data().post_id;
                 
                 posts.push({...postsObj, postID, postAuthor});
             });
@@ -36,16 +36,16 @@ class Feeds extends Component {
     //     })
     //     this.setState({posts: newPosts});
     // }
-    async deletePost (event) {
-        console.log(event)
-        await fsDb.collection('posts').doc(event).delete()
-        .then(() => {
-            console.log("Document successfully deleteed!");
-            //this.uploadPost;
-        }).catch((error) => {
-            console.error("Error removing post: ", error);
-        })
-    }
+    // async deletePost (event) {
+    //     console.log(event)
+    //     await fsDb.collection('posts').doc(event).delete()
+    //     .then(() => {
+    //         console.log("Document successfully deleteed!");
+    //         //this.uploadPost;
+    //     }).catch((error) => {
+    //         console.error("Error removing post: ", error);
+    //     })
+    // }
 
 
     ///////////////////////
@@ -54,9 +54,15 @@ class Feeds extends Component {
             return posts.map((post, index) => {
                 return (
                     <div key={index}>
+<<<<<<< HEAD
                         <h1>post Author:{post.postAuthor}</h1>
                         <p>Posts1={post.post}</p>
                         <button  onClick={() => this.deletePost(post.postID)} >delete </button>                       
+=======
+                        <p>Posts1={post.post}</p>                    
+                        <h2>post Author:{post.postAuthor}</h2>
+                                               
+>>>>>>> ec4ecbe3feb5ed7148cc94ad36ff6ab879e50ec5
                     </div>
                 )
             })
