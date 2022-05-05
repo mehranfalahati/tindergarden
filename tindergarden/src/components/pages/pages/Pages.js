@@ -12,7 +12,7 @@ import Searchbar from "../../searchbar/Searchbar";
 import PrivateDir from "../../PrivateDir";
 import PublicDir from "../../PublicDir";
 
-import pages from "./pages.css"
+import pages from "./Pages.css"
 
 const {Content} = Layout
 
