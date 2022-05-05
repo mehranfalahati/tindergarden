@@ -1,26 +1,65 @@
-/* .background {
-    background: url(../../../public/apppictures/1.jpeg);
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0 auto;
-    padding-top: 1em;
-    
-} */
-
 @media (min-width: 480px) {
     .p3 {
         text-align: right;
         margin-right: 8em;
         font-size: 17px;
     }
+    .background {
+        background: url(../../../public/apppictures/1.jpeg);
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding-top: 1em;
+    }
 }
 
-.background {
-    background: url(../../../public/apppictures/1.jpeg);
-    height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    padding-top: 1em;
+@media (max-width: 480px) {
+    .background {
+        background: url(../../../public/apppictures/1.jpeg);
+        height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding-top: 1em;
+    }
+    h1 {
+        text-align: center;
+    }
+
+    .p1 {
+        text-align: center;
+    }
+
+
+    .input1 {
+        border-radius: 0.5em;
+        display: flex;
+        margin-top: 1em;
+        margin-left: 3em;
+    }
+
+    .button1 {
+        border-radius: 0.5em;
+        display: flex;
+        margin-top: 1em;
+        margin-left: 8em;
+    }
+
+    .button2 {
+        border-radius: 0.5em;
+        display: flex;
+        margin-top: 1em;
+        margin-left: 5em;
+    }
+
+    .p2 {
+        text-align: center;
+    }
+
+    .p3 {
+        text-align: center;
+    }
 }
+
+

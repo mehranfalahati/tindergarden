@@ -159,7 +159,7 @@ class Edit extends Component {
         return(
             <div>
                 <button onClick={() => this.setState({showForm: true})} type="primary" >Edit Profile</button>
-                <button><Link to="/newpost">New Post</Link></button>
+                {/* <button><Link to="/newpost">New Post</Link></button> */}
                 {this.state.showForm ? this.showForm() : null}
                 <div> <UserInfo info= {this.state} imgURL= {this.state.userImage} coverPhoto={this.state.coverPhoto} /></div>
             </div>
