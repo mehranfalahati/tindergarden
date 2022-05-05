@@ -29,8 +29,7 @@ class Edit extends Component {
         
 
         this.uploadProps = {
-            name: 'file',
-            
+            name: 'file',            
             header: {
                 authorization: 'authorization-text'
             },
