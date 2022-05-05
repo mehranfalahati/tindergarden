@@ -9,6 +9,8 @@ import Post from "../newpost/Post";
 import {auth} from "../../../Firebase/firebase";
 import { Layout } from "antd";
 import Searchbar from "../../searchbar/Searchbar";
+import PrivateDir from "./PrivateDir";
+import PublicDir from "./PublicDir";
 
 import pages from "./pages.css"
 
@@ -48,12 +50,12 @@ class Pages extends Component {
                     <Content>
                       <div>
                           <Switch>
-                              <Route path="/home" authenticated={this.state.authenticated} component={Home} />                           
-                              <Route path="/edit" authenticated={this.state.authenticated} component={Edit} />
-                              <Route path="/profile" authenticated={this.state.authenticated} component={Profile}  />
-                              <Route exact path="/" authenticated={this.state.authenticated} component={Login} />
-                              <Route path="/newpost" authenticated={this.state.authenticated} component={Post} />
-                              <Route path="/signup" authenticated={this.state.authenticated} component={SignUp} />
+                              <PrivateDir path="/home" authenticated={this.state.authenticated} component={Home} />                           
+                              <PrivateDir path="/edit" authenticated={this.state.authenticated} component={Edit} />
+                              <PrivateDir path="/profile" authenticated={this.state.authenticated} component={Profile}  />
+                              <PublicDir exact path="/" authenticated={this.state.authenticated} component={Login} />
+                              <PrivateDir path="/newpost" authenticated={this.state.authenticated} component={Post} />
+                              <PublicDir path="/signup" authenticated={this.state.authenticated} component={SignUp}  />
                           </Switch>
                       </div>                        
                     </Content>           
