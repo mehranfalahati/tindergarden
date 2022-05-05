@@ -4,6 +4,7 @@ import Post from "../newpost/Post";
 import Feeds from "../feeds/Feeds";
 
 class Mainpage extends Component {
+
     render() {
         return (
             <div className="feed">

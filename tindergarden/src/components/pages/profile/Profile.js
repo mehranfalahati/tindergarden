@@ -8,6 +8,7 @@ import {Edit} from "@mui/icons-material"
 import UserProfile from "./UserProfile";
 import {currentUser, getCurrentUser} from "../../Users/auth";
 import {fsDb} from "../../../Firebase/firebase";
+import moment from "moment";
 
 
 
@@ -23,7 +24,7 @@ class Profile extends Component {
         }
     }
 
-
+    //Fetching the information of the current user for picking up userImage and coverPhoto URL from db
     fetchUserInfo = () => {
         fsDb.collection('users').where('user_id', '==', getCurrentUser().uid).get()
         .then((snapshots) => {
@@ -58,13 +59,8 @@ class Profile extends Component {
                         <Link className="edit" to="/edit"><Edit /></Link>
                         <p className="profilepostp">All Your Posts</p>
                          <UserPost />
-                    </div>   
-
-                    
-                    <Rightside/>
-
-                         
-                         
+                    </div>                     
+                    <Rightside/>                      
                 </div>
 
             </>
@@ -87,15 +83,15 @@ class UserPost extends Component {
 
 
     fetchFeeds = () => {
-        fsDb.collection('posts').where('post_id', '==', getCurrentUser().email)
+        fsDb.collection('posts').where('post_id', '==', getCurrentUser().email) //useremail was used as a post_id to make assciation in db
         .get().then((snapshot) => {
             let posts = [];
             snapshot.forEach((post) => {
                 const postID = post.id;
                 const postsObj = post.data();
                 const postAuthor = post.data().user_id;
-                //const postTime = post.data().createdAt;
-                posts.push({...postsObj, postID, postAuthor});
+                const postTime = moment(post.data().createdAt.toDate()).format('MMMM Do YYYY');
+                posts.push({...postsObj, postID, postAuthor, postTime});
             });
             this.setState({posts: posts});
         });
@@ -106,8 +102,7 @@ class UserPost extends Component {
         await fsDb.collection('posts').doc(event).delete()
         .then(() => {
             console.log("Document successfully deleteed!");
-            this.fetchFeeds();
-            //this.uploadPost;
+            this.fetchFeeds();            
         }).catch((error) => {
             console.error("Error removing post: ", error);
         })
@@ -120,7 +115,7 @@ class UserPost extends Component {
                 return (           
                     
                     <div className="postprofile" key={index}>
-                        {/* <p>You created this post on: {post.postTime}</p> */}
+                        <p>You created this post on: {post.postTime}</p>
                         <p>{post.post}</p>                   
                             <button  onClick={() => this.deletePost(post.postID)} >delete </button>                       
                     </div>

@@ -69,15 +69,15 @@ class Searchbar extends Component {
                     <div className="rightIcons">
                         <div className="iconItem">
                             <Person />
-                            <span className="iconNumber">?</span>
+                            <span className="iconNumber">?</span>  
                         </div>
                         <div className="iconItem">
                             <Chat />
-                            <span className="iconNumber">?</span>
+                            <span className="iconNumber">?</span>  
                         </div>
                         <div className="iconItem">
                             <Notifications />
-                            <span className="iconNumber">?</span>
+                            <span className="iconNumber">?</span>  
                         </div>
                     </div>
                     <Link to="/profile">

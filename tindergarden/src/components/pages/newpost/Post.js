@@ -15,7 +15,6 @@ class Post extends Component {
     constructor() {
         super();
         this.state ={
-            //title: '',
             post: '',
             post_id: '',
             createdAt: '',
@@ -23,24 +22,20 @@ class Post extends Component {
         };
         this.getPost = this.getPost.bind(this);
         this.uploadPost = this.uploadPost.bind(this);
-        this.renderPost = this.renderPost.bind(this);
-        //this.renderTitle = this.renderTitle.bind(this);
+        this.renderPost = this.renderPost.bind(this);      
         
     }
 
-    // postArray = [];
-    
+    //geting the post of the current user from the db   
     getPost() {
         db.collection('users').doc(getCurrentUser().uid).get()
         .then((doc) => {
-            if (doc.exists) {
-                    // this.postArray.push(doc.data());
+            if (doc.exists) {                    
                     console.log("Document data:", doc.data());                    
-                } else {
-                    // doc.data() will be undefined in this case
+                } else {                    
                     console.log("No such document!");
                 }
-        }) .catch((error) => ("Error gett`ing document: ", error));
+        }) .catch((error) => ("Error getting document: ", error));
         
     };
 
@@ -54,14 +49,19 @@ class Post extends Component {
 
 
 
+    renderPost (event) {
+        this.setState({post: event.target.value});
+    }
 
+    ////////Uploading a post to the db    
     async uploadPost(event) {        
         event.preventDefault(); 
                
         const user_id = getCurrentUser().email;
         await db.collection("posts").add(
-           {...this.state, post_id: user_id, createdAt: (new Date)}
+           {...this.state, post_id: user_id, createdAt: (new Date)}  //user_id here is the useremail which is used as a post Id for making association between posts and users inside the db
         ).then(() => {
+            this.renderPost();
             console.log("post successfully posted!");
             
         });
@@ -81,95 +81,5 @@ class Post extends Component {
         );
     }
 }
-
-////////////////Mehran code//////////////
-
-
-// class Post extends Component {
-//     constructor() {
-//         super();
-//         this.state = {
-//             description: null
-//         }
-        
-//         this.uploadProps = {
-//             name: 'file',
-//             action: this.uploadFile,
-//             headers: {
-//                 authorization: 'authorization-text'
-//             },
-//             onChange(info) {
-//                 if (info.file.status !== 'uploading') {
-//                     console.log(info.file, info.fileList);
-//                 }
-//                 message.success(`${info.file.name} is uploaded successfully!`)
-//             }
-//         }
-//         this.getDocData = this.getDocData.bind(this)
-//     }
-
-    
-
-//     saveActivity = (data) => {
-//         //todo
-//     }
-
-//     _handleSubmit = () => {
-//         const { description } = this.state;
-//         if (!description) {
-//             message.error("Please fill in required fields");
-//             return
-//         }
-//         this.saveActivity(this.state);
-//         this.props.history.push('/home');
-//     }
-
-//     _handeDiscription = (event) => {
-//         this.setState({description: event.target.value});
-//     }
-
-
-//     getDocData(){
-
-//         // db.collection("users").get().then((querySnapshot) => {
-//         //     querySnapshot.forEach((doc) => {
-//         //         // doc.data() is never undefined for query doc snapshots
-//         //         console.log(doc.id, " => ", doc.data());
-//         //     });
-//         // });
-//         var docRef = db.collection("users").doc("I1wLEfqIhfkcdi4itfRw");
-//         docRef.get().then((doc) => {
-//             if (doc.exists) {
-//                 console.log("Document data:", doc.data());
-//                 this.whatevermethod
-//             } else {
-//                 // doc.data() will be undefined in this case
-//                 console.log("No such document!");
-//             }
-//         }).catch((error) => {
-//             console.log("Error getting document:", error);
-//         });
-//         console.log('executed')
-
-//     }
-// ////////////////////////////JJJ
-//     render() {
-//         return (
-//             <div>
-//                 <form onSubmit={this._handleSubmit}>
-//                     <h2>Create a new Post</h2>
-//                     <label>What is in your mind?</label> <TextArea placeholder="What is in you mind?" onChange={this._handeDiscription} type="text" />
-
-//                     <Upload {...this.uploadProps}>
-//                         <Button icon={<UploadOutlined />}>Upload Photos</Button>
-//                     </Upload>
-
-//                     <Button onClick={this._handleSubmit}>Post</Button>
-//                 </form>
-//                     <button onClick={this.getDocData}>ali click here</button>
-//             </div>
-//         )
-//     }
-// }
 
 export default Post;

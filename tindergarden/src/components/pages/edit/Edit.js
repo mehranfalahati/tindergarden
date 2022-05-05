@@ -31,8 +31,7 @@ class Edit extends Component {
         
 
         this.uploadProps = {
-            name: 'file',
-            
+            name: 'file',            
             header: {
                 authorization: 'authorization-text'
             },
@@ -48,39 +47,39 @@ class Edit extends Component {
     }
        
 
-        ////////Upload a file
+        ////////    Upload a user image ////////
 
-        uploadUserImage = (file) => {
-            let storageRef = storage.ref()
-            let fileRef = storageRef.child(file.name)
-            return fileRef.put(file).then(() => {
-                fileRef.getDownloadURL().then((url) => {
-                fsDb.collection("users").doc(this.state.userDocId)
-                .set({ userImage: url}, {merge: true}).then ((firebaseImage) => {
-                    
-                        this.setState({userImage: url })
-                    })
+    uploadUserImage = (file) => {
+        let storageRef = storage.ref()
+        let fileRef = storageRef.child(file.name)
+        return fileRef.put(file).then(() => {
+            fileRef.getDownloadURL().then((url) => {
+            fsDb.collection("users").doc(this.state.userDocId)
+            .set({ userImage: url}, {merge: true}).then ((firebaseImage) => {
+                
+                    this.setState({userImage: url })
                 })
-            })           
-        };
-
-        uploadCover = (file) => {
-            let storageRef = storage.ref()
-            let fileRef = storageRef.child(file.name)
-            return fileRef.put(file).then(() => {
-                fileRef.getDownloadURL().then((url) => {
-                fsDb.collection("users").doc(this.state.userDocId)
-                .set({ coverPhoto: url}, {merge: true}).then ((firebaseImage) => {
-                    
-                        this.setState({coverPhoto: url })
-                    })
+            })
+        })           
+    };
+    /////////   Upload cover photo////////
+    uploadCover = (file) => {
+        let storageRef = storage.ref()
+        let fileRef = storageRef.child(file.name)
+        return fileRef.put(file).then(() => {
+            fileRef.getDownloadURL().then((url) => {
+            fsDb.collection("users").doc(this.state.userDocId)
+            .set({ coverPhoto: url}, {merge: true}).then ((firebaseImage) => {
+                
+                    this.setState({coverPhoto: url })
                 })
-            })           
-        };
-        
+            })
+        })           
+    };
+    
         
     
-    ///Fetching user info
+    ///Fetching the current user info
     componentDidMount(){
         this.fetchUserInfo();        
     }
@@ -101,7 +100,7 @@ class Edit extends Component {
 
 
 
- //// Update user info to DB
+ //// Update the current user info to DB
     saveProfile (data) {        
         fsDb.collection("users").where("user_id", "==", getCurrentUser().uid).get()
         .then((snapshots) => {            
@@ -118,7 +117,7 @@ class Edit extends Component {
 
 
 
- //// handler
+ //// handlers//////
     _handleSubmit = (event) => {
         event.preventDefault();
         this.saveProfile(this.state)
@@ -134,7 +133,7 @@ class Edit extends Component {
     }
 
         
- //// From
+ //// Edit From ///////
     showForm() {
         return (
             <div>
@@ -178,7 +177,7 @@ class UserInfo extends Component {
                 <div>
                     {/* <h2>Name:{info.name}</h2>
                     <h2>UserImage:{info.userImage}</h2>
-                    <h2>coverPhoto:{info.coverPhoto}</h2>                     */}
+                    <h2>coverPhoto:{info.coverPhoto}</h2>*/}
                 </div>
             </div>
          )
