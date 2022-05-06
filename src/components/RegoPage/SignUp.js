@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { getCurrentUser, signInWithGoogle, signup } from "../Users/auth";
 import {Link} from "react-router-dom"
 import {fsDb} from "../../Firebase/firebase"
-import si from "./si.css"
+import "./signup.css"
 
 
 

@@ -1,12 +1,9 @@
-import {auth} from '../../../Firebase/firebase'
+
 import React from 'react';
-import { getCurrentUser } from '../../Users/auth';
+
 import {
   Route,
-  BrowserRouter as Router,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+  BrowserRouter as Router, Redirect,} from "react-router-dom";
 
 function PrivateDir({ component: Component, authenticated, ...rest }) {
    console.log(rest);

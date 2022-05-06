@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import leftside from "./leftside.css"
-import {currentUser, getCurrentUser} from "../../Users/auth";
-import {fsDb, auth} from "../../../Firebase/firebase"
+import "./leftside.css"
+import {getCurrentUser} from "../../Users/auth";
+import {fsDb} from "../../../Firebase/firebase"
 
 
 class Leftside extends Component {
@@ -16,6 +16,8 @@ class Leftside extends Component {
         this.fetchUsers();
     }
 
+   
+    b = getCurrentUser //this is for debugging
    
 
     fetchUsers = () => {

@@ -1,20 +1,20 @@
 
-import { ResetTvRounded, TripOriginSharp } from "@mui/icons-material";
-import edit from "./edit.css"
-import { render } from "@testing-library/react";
+
+import "./edit.css"
+
 import React, { Component }  from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import { Upload, Message, Button, message } from "antd"
+
+import { Upload, Button, message } from "antd"
 import { UploadOutlined } from '@ant-design/icons';
-import { Card, Input  } from 'antd';
-import { ActionTypes } from "@mui/base";
+import { Input  } from 'antd';
+
 import { fsDb, storage } from "../../../Firebase/firebase";
 import { getCurrentUser } from "../../Users/auth";
-import Profile from "../profile/Profile";
-import {getStorage, ref} from "firebase/storage"
 
 
-const { TextArea } = Input;
+
+
+
 
 
 class Edit extends Component {
@@ -171,7 +171,7 @@ class Edit extends Component {
 
 class UserInfo extends Component {
      render() {
-         const info = this.props.info;
+        //const info = this.props.info;
          return (
             <div>
                 <div>

@@ -1,8 +1,8 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import { fsDb } from "../../../Firebase/firebase";
-import { getCurrentUser } from "../../Users/auth";
+//import { getCurrentUser } from "../../Users/auth";
 import moment from "moment";
-import feeds from "./feeds.css"
+import "./feeds.css"
 
 
 class Feeds extends Component {

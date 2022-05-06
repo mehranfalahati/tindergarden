@@ -1,6 +1,6 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import pokiapi from "./pokiapi.css"
+import "./pokiapi.css"
 
 const Pokiapi = () => {
     const [pokemon, setPokemon] = useState("pikachu")
@@ -42,7 +42,7 @@ const Pokiapi = () => {
             {pokemonDate.map((data) => {
                 return(
                     <div  className="pokemonDetail">
-                        <img src={data.sprites["front_default"]} />
+                        <img alt="pokipic" src={data.sprites["front_default"]} />
                         <div>Type: {pokemonType}</div>
 
                         <div>Height: {Math.round(data.height * 10)} cm</div>

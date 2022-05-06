@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import mainpage from "./mainpage.css"
+import "./mainpage.css"
 import Post from "../newpost/Post";
 import Feeds from "../feeds/Feeds";
 

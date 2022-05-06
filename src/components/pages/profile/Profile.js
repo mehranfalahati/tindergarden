@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import "./profile.css"
 import Leftside from "../leftside/Leftside";
 import Rightside from "../rightside/Rightside";
-import Searchbar from "../../searchbar/Searchbar";
-import { Routes, Route, Link } from "react-router-dom";
+
+import { Link } from "react-router-dom";
 import {Edit} from "@mui/icons-material"
 import UserProfile from "./UserProfile";
-import {currentUser, getCurrentUser} from "../../Users/auth";
+import {getCurrentUser} from "../../Users/auth";
 import {fsDb} from "../../../Firebase/firebase";
 import moment from "moment";
 
@@ -51,8 +51,8 @@ class Profile extends Component {
                 <div className="mainContainer">
                     <Leftside />
                     <div className="profilePicture">
-                        <img className="profilePic" src={this.state.userImage || "/pictures/profile/d1.jpg"} />
-                        <img className="profileCover" src={this.state.coverPhoto || "/pictures/cover/dc.jpg"}/>
+                        <img className="profilePic" alt="profilepic" src={this.state.userImage || "/pictures/profile/d1.jpg"} />
+                        <img className="profileCover" alt="coverpic" src={this.state.coverPhoto || "/pictures/cover/dc.jpg"}/>
                         <div className="userInfo">
                             <UserProfile userId={getCurrentUser().uid}/>
                         </div>

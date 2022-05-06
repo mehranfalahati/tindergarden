@@ -3,7 +3,7 @@ import "./home.css";
 import Leftside from "../leftside/Leftside";
 import Mainpage from "../mainpage/Mainpage";
 import Rightside from "../rightside/Rightside";
-import Searchbar from "../../searchbar/Searchbar";
+
 
 
 class Home extends Component {

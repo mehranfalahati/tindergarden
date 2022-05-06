@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { getCurrentUser, signInWithGoogle, signup } from "../../Users/auth";
-import { Input, Button, message, Upload } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
-import {db, fsDb} from '../../../Firebase/firebase'
-import moment from "moment";
-import { Link } from "react-router-dom";
-import post from "./post.css"
-const { TextArea } = Input
+import { getCurrentUser } from "../../Users/auth";
+
+
+import {db} from '../../../Firebase/firebase'
+
+
+import "./post.css"
+
 
 
 
@@ -43,15 +43,11 @@ class Post extends Component {
         console.log(event.target.value);
         this.setState({post: event.target.value});
     }
-    // renderTitle (event) {
-    //     this.setState({title: event.target.value})
-    // }
+   
 
 
 
-    renderPost (event) {
-        this.setState({post: event.target.value});
-    }
+    
 
     ////////Uploading a post to the db    
     async uploadPost(event) {        

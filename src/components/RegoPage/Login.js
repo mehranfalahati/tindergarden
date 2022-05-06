@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {Link} from "react-router-dom";
-import { signin, signInWithGoogle } from "../Users/auth";
-import login from "./login.css";
+import { signin } from "../Users/auth";
+import "./login.css";
 
 
 class Login extends Component {

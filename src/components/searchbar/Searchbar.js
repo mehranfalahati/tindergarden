@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import searchbar from "./searchbar.css";
+import "./searchbar.css";
 import {Search, Person, Chat, Notifications} from "@mui/icons-material";
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { signOut } from "../Users/auth";
 import {fsDb} from "../../Firebase/firebase";
 import {getCurrentUser} from "../Users/auth"
@@ -51,7 +51,7 @@ class Searchbar extends Component {
 
                 <div className="searchLeft">
                     {/* <span className="appName">TinderGarden</span> */}
-                    <img className="appName" src="/pictures/logo.jpg" />
+                    <img alt="applogo" className="appName" src="/pictures/logo.jpg" />
                 </div>
             
                 <div className="searchCenter">
@@ -83,7 +83,7 @@ class Searchbar extends Component {
                         </div>
                     </div>
                     <Link to="/profile">
-                        <img src={this.state.userImage || "/pictures/profile/d1.jpg"} alt="profile-picture" className="searchImg"/>  
+                        <img src={this.state.userImage || "/pictures/profile/d1.jpg"} alt="profilepic" className="searchImg"/>  
                     </Link>
                     
                     <Link className="link" onClick={this._handleLogOut}>

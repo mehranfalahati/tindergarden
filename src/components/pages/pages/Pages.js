@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom"
+import {BrowserRouter as Router, Switch} from "react-router-dom"
 import Home from "../home/Home";
 import SignUp from "../../RegoPage/SignUp";
 import Edit from "../edit/Edit";
@@ -12,7 +12,7 @@ import Searchbar from "../../searchbar/Searchbar";
 import PrivateDir from "./PrivateDir";
 import PublicDir from "./PublicDir";
 
-import pages from "./pages.css"
+import "./pages.css"
 
 const {Content} = Layout
 

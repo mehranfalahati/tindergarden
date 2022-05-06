@@ -1,8 +1,7 @@
 import React from 'react';
 import {
   Route,
-  BrowserRouter as Router,
-  Switch,
+  BrowserRouter as 
   Redirect,
 } from "react-router-dom";
 

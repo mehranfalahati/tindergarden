@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Pokiapi from "../../pokiapi/Pokiapi";
-import rightside from "./rightside.css"
+import "./rightside.css"
 
 class Rightside extends Component {
     render() {
