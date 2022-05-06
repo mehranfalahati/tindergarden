@@ -28,7 +28,7 @@ class Post extends Component {
 
     //geting the post of the current user from the db   
     getPost() {
-        db.collection('users').doc(getCurrentUser().uid).get().then((doc)=>{
+    db.collection('users').doc(getCurrentUser().uid).get().then((doc)=>{
             if (doc.exists) {                    
                     console.log("Document data:", doc.data());                    
                 } else {                    
