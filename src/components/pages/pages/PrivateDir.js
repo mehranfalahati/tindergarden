@@ -1,9 +1,7 @@
 
 import React from 'react';
 
-import {
-  Route,
-  BrowserRouter as Router, Redirect,} from "react-router-dom";
+import {Route, Redirect} from "react-router-dom";
 
 function PrivateDir({ component: Component, authenticated, ...rest }) {
    console.log(rest);

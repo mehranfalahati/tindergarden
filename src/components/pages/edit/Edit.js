@@ -6,7 +6,7 @@ import React, { Component }  from "react";
 
 import { Upload, Button, message } from "antd"
 import { UploadOutlined } from '@ant-design/icons';
-import { Input  } from 'antd';
+
 
 import { fsDb, storage } from "../../../Firebase/firebase";
 import { getCurrentUser } from "../../Users/auth";
