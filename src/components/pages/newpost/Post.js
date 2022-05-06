@@ -52,7 +52,7 @@ class Post extends Component {
         event.preventDefault(); 
                
         const user_id = getCurrentUser().email; //user_id here is the useremail which is used as a post Id for making association between posts and users inside the db
-        await db.collection("posts").add({...this.state, post_id: user_id, createdAt: new Date}).then(() => { 
+        await db.collection("posts").add({...this.state, post_id: user_id, createdAt: new Date()}).then(() => { 
             this.renderPost();
             console.log("post successfully posted!");
             
