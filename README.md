@@ -4,7 +4,7 @@
 
 This project is a social media app for kids to surf the internet in a safe environment and keep in touch with each other. Kids can enter a Pokemon's name and enjoy!.
 
-Live Demo:[Tindergarden](https://tindergarden.netlify.app/) 
+Live Demo: [Tindergarden](https://tindergarden.netlify.app/) 
 
 ### How to get start
 
