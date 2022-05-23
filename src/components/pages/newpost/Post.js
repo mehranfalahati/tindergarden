@@ -37,11 +37,9 @@ class Post extends Component {
         }).catch((error) => (error));
     };
 
-    renderPost(event) {
-        console.log(event.target.value);
+    renderPost(event) {        
         this.setState({post: event.target.value});
-    }
-   
+    }  
 
 
 
@@ -53,11 +51,9 @@ class Post extends Component {
         const user_id = getCurrentUser().email; //user_id here is the useremail which is used as a post Id for making association between posts and users inside the db
         await db.collection("posts").add({...this.state, post_id: user_id, createdAt: new Date()}).then(() => { 
             this.renderPost();
-            console.log("post successfully posted!");
-            
-            
+            console.log("post successfully posted!");                      
         });
-        this.setState({post: ''});
+        this.setState({post: ''})
     }
 
 
