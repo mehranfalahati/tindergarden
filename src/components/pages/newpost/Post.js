@@ -28,7 +28,7 @@ class Post extends Component {
 
     //geting the post of the current user from the db   
     getPost() {
-        db.collection('users').doc(getCurrentUser().uid).get().then((doc)=>{
+        db.collection('users').doc(getCurrentUser().uid).get().then((doc) => {
             if (doc.exists) {                    
                     console.log("Document data:", doc.data());                    
                 } else {                    
@@ -49,14 +49,15 @@ class Post extends Component {
 
     ////////Uploading a post to the db    
     async uploadPost(event) {        
-        event.preventDefault(); 
-               
+        event.preventDefault();               
         const user_id = getCurrentUser().email; //user_id here is the useremail which is used as a post Id for making association between posts and users inside the db
         await db.collection("posts").add({...this.state, post_id: user_id, createdAt: new Date()}).then(() => { 
             this.renderPost();
             console.log("post successfully posted!");
             
+            
         });
+        this.setState({post: ''});
     }
 
 

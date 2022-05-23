@@ -31,6 +31,7 @@ class Feeds extends Component {
                 posts.push({...postsObj, postID, postAuthor, postTime});
             });
             this.setState({posts: posts});
+            setTimeout(this.fetchFeeds, 2000);
         });
     }
 
