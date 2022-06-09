@@ -3,20 +3,11 @@
         -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
         box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
         text-align: center;
-    }
-    
-    .labelOne {
-    
-        
-    }
-    
-    .labelTwo {
-       
-    }
-    
+    }    
+   
     .labelThree {
-        width: 400px;
-        height: 200px;
+        width: 300px;
+        height: 100px;
     }
     
     .uploadButton:hover {
@@ -28,4 +19,40 @@
         margin: 1em;
     }
     
+}
+
+.editProfile {
+    background-color: black;
+    color: white;
+    padding: 12px;
+    font-weight: bolder;
+    border-radius: 0.5em;
+    margin: 20px;
+}
+
+.saveEdit {
+    background-color: black;
+    color: white;
+    padding: 12px;
+    font-weight: bolder;
+    border-radius: 0.5em;
+    margin: 20px;
+}
+
+.uploadButton {
+    background-color: black;
+    color: white;
+    padding: 12px;
+    font-weight: bolder;
+    border-radius: 0.5em;
+    margin: 3px;    
+}
+
+.labelTwo {
+    margin: 16px;
+}
+
+.labelThree {
+    margin-top: 8px;
+    margin-bottom: 16px;
 }

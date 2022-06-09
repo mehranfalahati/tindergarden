@@ -140,7 +140,9 @@ class Edit extends Component {
                 <form className="editPage">
                     <label className="labelOne">Name:</label> <input className="labelOne" onChange={this._handleName} type="text" value={this.state.name} required placeholder={this.props.name} />
                     <hr></hr>
-                    <label className="labelTwo">About me:</label><textarea className="labelThree" onChange={this._handlebio} type="text" value={this.state.bio} />
+                    <label className="labelTwo">About me:</label>
+                    <br></br>
+                    <textarea className="labelThree" onChange={this._handlebio} type="text" value={this.state.bio} />
                     <Upload {...this.uploadProps} action={this.uploadUserImage}>
                         <Button className="uploadButton" icon={<UploadOutlined />}>Upload Profile Photo</Button>
                     </Upload>
@@ -160,8 +162,7 @@ class Edit extends Component {
     render() {
         return(
             <div>
-                <button onClick={() => this.setState({showForm: true})} type="primary" >Edit Profile</button>
-                {/* <button><Link to="/newpost">New Post</Link></button> */}
+                <button className="editProfile" onClick={() => this.setState({showForm: true})} type="primary" >Edit Profile</button>                
                 {this.state.showForm ? this.showForm() : null}
                 <div> <UserInfo info= {this.state} imgURL= {this.state.userImage} coverPhoto={this.state.coverPhoto} /></div>
             </div>

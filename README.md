@@ -25,12 +25,15 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 - React.js
 - Firebase (Google Cloud)
-- Firestore database / No SQL db used for storing users and posts including images
+- Firestore Database / No SQL db used for storing users and posts including images
 - Pokemon API
-- Mobile first design / CSS
+- Mobile-first design / CSS
 - Ant Design 
 
-
+### usage
+Users must create an account using email and password or Gmail. On the home page, users can create a new post, read all posts, see all users, enter a Pokemon's name and enjoy!.
+By clicking on the profile picture, user can see their profile, read and delete their post.
+Edit page lets users edit their profile. By clicking on the edit profile button, the form will appear.
 ### Bugs and Issues
 
 Current bugs:
@@ -43,7 +46,7 @@ Current bugs:
 - Add event feature to the app and let kids gather and play together.
 - Add notification features to the profile page to inform users.
 - Add simple games to the app and let different users play online with each other.
-- Add chat feature to the app.
+- Add a chat feature to the app.
 
 
 ### Contributors
