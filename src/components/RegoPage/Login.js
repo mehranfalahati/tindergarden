@@ -56,7 +56,7 @@ class Login extends Component {
                         <button className="button1" type="submit">Login</button>
                         <p className="p2">Don't have an account? <Link to="/signup">Sign Up</Link> </p>
 
-                        {this.state.error ? (<p>{this.state.error}</p>) : null}
+                        {this.state.error ? (<p style={{color: 'red', 'font-weight': 'bolder'}}><span>ERROR!</span><br></br>{this.state.error}</p>) : null}
 
                     </div>
                     
