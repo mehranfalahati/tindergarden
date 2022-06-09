@@ -65,3 +65,11 @@
     }
 }
 
+.button2 {
+    border: solid black 2px;
+    padding: 8px;
+    color: white;
+    font-weight: bolder;
+    color: black;
+}
+
